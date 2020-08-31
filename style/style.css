@@ -1,0 +1,218 @@
+header #logo img {
+    width: 450px;
+    height: 85px;
+    margin: 5px 5px 5px 80px;
+}
+
+header .form-inline a {
+    color: white;
+    margin: 0 40px 0 0;
+}
+
+header .form-inline a span {
+    margin-left: 20px;
+}
+
+header .form-inline a img {
+    width: 53px;
+    height: 53px;
+}
+
+.cH1,
+.cH2 {
+    font-weight: bolder;
+    font-size: 40px;
+}
+
+.cH2 {
+    font-size: 20px;
+}
+
+.cH3 {
+    font-weight: 400;
+    font-size: large;
+}
+
+.titleCenter {
+    float: none;
+    position: relative;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+}
+
+.homeTextBox {
+    margin: 5px 40px 25px 10px;
+}
+
+.cButton {
+    padding-right: 50px;
+    padding-left: 50px;
+}
+
+.picCenter {
+    position: relative;
+    left: 5%;
+}
+
+.homeIcon img {
+    width: 381.65px;
+    height: 300.49px;
+}
+
+#homeTableImage {
+    padding-right: 150px;
+}
+
+.footer img {
+    width: 50px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+#copyright {
+    width: 100%;
+    text-align: center;
+    font-weight: 400;
+    padding-bottom: 20px;
+    background-color: #EEEEEE;
+}
+
+.subTitle {
+    margin-top: 25px;
+    padding: 10px;
+    width: 150px;
+    color: white;
+    text-align: center;
+    background-color: #36B24F;
+}
+
+.subTitle2 {
+    margin-top: 0;
+    padding: 15px;
+    text-align: center;
+    background-color: #36B24F;
+    color: white;
+}
+
+.box {
+    border: 1px solid #707070;
+    margin: 0;
+    padding: 0;
+    margin-top: 30px;
+}
+
+.boxBottom {
+    margin: 0;
+    border-bottom: 1px solid #707070;
+}
+
+.boxLeft {
+    border-left: 1px solid #707070;
+    margin: 0;
+    padding: 0;
+}
+
+.boxRight {
+    border-right: 1px solid #707070;
+    margin: 0;
+    padding: 0;
+}
+
+.boxText {
+    padding: 10px 30px 10px 30px;
+    text-align: center;
+}
+
+.boxBusPic img {
+    margin: 20px 0 10px 20px;
+    width: 211px;
+    height: 132px;
+    text-align: center;
+}
+
+.boxText img {
+    width: 25px;
+    height: 25px;
+    margin-bottom: 15px;
+}
+
+.busSeatBooked {
+    width: 50px;
+    height: 50px;
+    background-color: red;
+}
+
+.emptySpace {
+    width: 40px;
+    height: 40px;
+}
+
+.routeTable table, .routeTable td {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 15px;
+}
+
+.routeTable input {
+    width: 30px;
+    height: 30px;
+}
+
+.accountLeftContainer {
+    width: 250px;
+    background-color: white;
+    height: 100%;
+}
+
+.accountRightContainer {
+    background-color: #EEEEEE;
+    padding: 20px;
+    width: 85%;
+    margin-left: 250px;
+}
+
+.accountLeftPic {
+    padding: 30px;
+}
+
+.boxBottom {
+    padding: 5px 5px 2px 25px;
+}
+
+.boxBottom a {
+    text-decoration: none;
+    color: #000000;
+    font-weight: 700;
+}
+
+.boxBottom a span{
+    margin-left: 10px;
+}
+
+.accountLeftContainer .boxBottom {
+    padding-bottom: 15px;
+}
+
+.myProfile, .changePassword, .schedules, .addTrip, .selectBus, .addBus, .continueAccount{
+    background-color: white;
+    padding: 20px;
+}
+
+.formSize{
+    width: 60%;
+}
+
+.fileChoosenContainer{
+    background-color: #36B24F;
+    text-align: center;
+}
+
+.fileChoosenContainer .form-inline{
+    background-color: #36B24F;
+    text-align: center;
+    padding: 5px 15px 5px 15px;
+    margin-top: 10px;
+    color: white;
+}
