@@ -53,7 +53,7 @@
                 </form>
                 <br><br><br>
                 <div style="text-align: center;">
-                    <button type="submit" id="submit" name="submit" class="btn btn-light" onclick="javascript: window.location.href = 'createAccount.php'"><b>Create new account</b></button>
+                  <a href="createAccount.php">  <button type="submit" id="submit" name="submit" class="btn btn-light"  ><b>Create new account</b></button></a>
                 </div>
             </div>
         </div>

@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login_user']) && isset
         $_SESSION['email'] = $user->email;
         $_SESSION['logged'] = true;
 
-        header("location: welcome.php");
+        // header("location: welcome.php");
     } catch (LogicException $th) {
         $msg = $th->getMessage();
     } catch (Exception $t) {
