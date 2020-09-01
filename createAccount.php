@@ -1,3 +1,5 @@
+<?php include __DIR__ . '/db/register_server.php'; ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -38,15 +40,15 @@
                 <form>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputEmail1">
+                        <input type="password" name="password" class="form-control" id="exampleInputEmail1">
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Confirm Password</label>
-                        <input type="password" class="form-control" id="exampleInputEmail1">
+                        <input type="password" name="password" class="form-control" id="exampleInputEmail1">
                     </div>
                     <br><br>
                     <button type="button" class="btn btn-success btn-lg btn-block">Register</button>
