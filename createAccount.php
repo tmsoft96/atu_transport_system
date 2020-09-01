@@ -55,7 +55,7 @@
                 </form>
                 <br><br><br>
                 <div style="text-align: center;">
-                    <button type="button" class="btn btn-light"><b>Login</b></button>
+                   <a href="login.php"> <button type="button" class="btn btn-light"><b>Login</b></button></a>
                 </div>
             </div>
         </div>
