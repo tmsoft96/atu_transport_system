@@ -13,7 +13,7 @@
     <script src="./function/script.js" type="text/javascript"></script>
 </head>
 
-<body onload="openTapMyAccount('myProfileId')">
+<body onload="openTapMyAccount('myProfileId', 'My Profile')">
     <header>
         <nav class="navbar navbar-light" style="background-color: #0086FC;">
             <div id="logo">
@@ -39,14 +39,14 @@
                     <span class="cH2">Name</span>
                 </div>
                 <div class="boxBottom">
-                    <a href="#" onclick="openTapMyAccount('myProfileId')">
+                    <a href="#" onclick="openTapMyAccount('myProfileId', 'My Profile')">
                         <img src="./img/profile.png" alt="">
                         <span class="cH3">My Profile</span>
                     </a>
                 </div>
                 <br><br>
                 <div class="boxBottom">
-                    <a href="#" onclick="openTapMyAccount('changePasswordId')">
+                    <a href="#" onclick="openTapMyAccount('changePasswordId', 'Change Password')">
                         <img src="./img/changePassword.png" alt="">
                         <span class="cH3">Change Password</span>
                     </a>
