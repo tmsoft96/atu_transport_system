@@ -1,3 +1,4 @@
+<?php include __DIR__ . '/db/login_server.php'; ?>
 <!doctype html>
 <html lang="en">
 
@@ -5,7 +6,6 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="./style/style.css">
@@ -35,25 +35,25 @@
             <span class="cH1">Login</span>
             <br> <br>
             <div class="continueAccount formSize">
-                <form>
+                <form method="POST">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <input type="email" id="userName" name="username" class="form-control" aria-describedby="emailHelp" required>
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputEmail1">
+                        <input type="password" id="password" class="form-control" name="password" required>
                     </div>
                     <br>
                     <div style="text-align: right;">
                         <button type="button" class="btn btn-light"><b><u><i>Forget Password</i></u></b></button>
                     </div>
                     <br><br>
-                    <button type="button" class="btn btn-success btn-lg btn-block">LOGIN</button>
+                    <button type="submit" id="submit" name="login_user" class="btn btn-success btn-lg btn-block">LOGIN</button>
                 </form>
                 <br><br><br>
                 <div style="text-align: center;">
-                    <button type="button" class="btn btn-light"><b>Create new account</b></button>
+                  <a href="createAccount.php">  <button type="submit" id="submit" name="submit" class="btn btn-light"  ><b>Create new account</b></button></a>
                 </div>
             </div>
         </div>
