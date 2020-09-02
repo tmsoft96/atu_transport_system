@@ -13,7 +13,7 @@
     <script src="./function/script.js" type="text/javascript"></script>
 </head>
 
-<body onload="openTapMyAccount('schedulesId')">
+<body onload="openTapMyAccount('schedulesId', 'Schedules')">
     <header>
         <nav class="navbar navbar-light" style="background-color: #0086FC;">
             <div id="logo">
@@ -39,21 +39,21 @@
                     <span class="cH2">Name</span>
                 </div>
                 <div class="boxBottom">
-                    <a href="#" onclick="openTapMyAccount('schedulesId')">
+                    <a href="#" onclick="openTapMyAccount('schedulesId', 'Schedules')">
                         <img src="./img/schedules.png" alt="Schedules">
                         <span class="cH3">Schedules</span>
                     </a>
                 </div>
                 <br><br>
                 <div class="boxBottom">
-                    <a href="#" onclick="openTapMyAccount('addTripId')">
+                    <a href="#" onclick="openTapMyAccount('addTripId', 'Add Trip')">
                         <img src="./img/addTrip.png" alt="Add Trip">
                         <span class="cH3">Add Trip</span>
                     </a>
                 </div>
                 <br><br>
                 <div class="boxBottom">
-                    <a href="#" onclick="openTapMyAccount('addBusId')">
+                    <a href="#" onclick="openTapMyAccount('addBusId', 'Add Bus')">
                         <img src="./img/addBus.png" alt="Add Bus">
                         <span class="cH3">Add Bus</span>
                     </a>
@@ -61,7 +61,7 @@
             </div>
         </div>
         <div class="accountRightContainer">
-            <span class="cH1">Schedules</span>
+            <span class="cH1" id="title">Schedules</span>
             <br> <br>
             <div class="schedules tabContent" id="schedulesId">
                 <div class="box">
@@ -247,7 +247,7 @@
                         </div>
                     </div>
                     <br><br>
-                    <button type="button" class="btn btn-success btn-lg btn-block" onclick="openTapMyAccount('selectBusId')">Select Bus</button>
+                    <button type="button" class="btn btn-success btn-lg btn-block" onclick="openTapMyAccount('selectBusId', 'Select Bus')">Select Bus</button>
                 </div>
                 <div class="selectBus tabContent" id="selectBusId">
                     <div class="box">
