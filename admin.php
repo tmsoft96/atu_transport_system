@@ -1,3 +1,7 @@
+<?php
+include __DIR__ . "/base_url.php";
+
+?>
 <!doctype html>
 <html lang="en">
 
@@ -7,8 +11,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="public/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="public/style/style.css">
     <title>Hompage</title>
     <script src="./function/script.js" type="text/javascript"></script>
 </head>
@@ -17,14 +21,14 @@
     <header>
         <nav class="navbar navbar-light" style="background-color: #0086FC;">
             <div id="logo">
-                <img src="./img/logo.png" alt="logo">
+                <img src="public/img/logo.png" alt="logo">
             </div>
             <form class="form-inline">
                 <a href="index.php">Home</a>
-                <a href="bookingHistory.php">Booking History</a>
-                <a href="routes.php">Routes</a>
+                <a href="<?= APP_URL?>/modules/bookingHistory.php">Booking History</a>
+                <a href="<?= APP_URL?>/modules/routes.php">Routes</a>
                 <a href="myAccount.php">
-                    <img src="./img/profilePic.png" alt="profile picture" class="rounded-circle">
+                    <img src="public/img/profilePic.png" alt="profile picture" class="rounded-circle">
                     <span>My Account</span>
                 </a>
             </form>
@@ -35,26 +39,26 @@
         <div class="float-left">
             <div class="accountLeftContainer">
                 <div class="accountLeftPic">
-                    <img src="./img/profilePic.png" alt="profile pic">
+                    <img src="public/img/profilePic.png" alt="profile pic">
                     <span class="cH2">Name</span>
                 </div>
                 <div class="boxBottom">
                     <a href="#" onclick="openTapMyAccount('schedulesId', 'Schedules')">
-                        <img src="./img/schedules.png" alt="Schedules">
+                        <img src="public/img/schedules.png" alt="Schedules">
                         <span class="cH3">Schedules</span>
                     </a>
                 </div>
                 <br><br>
                 <div class="boxBottom">
                     <a href="#" onclick="openTapMyAccount('addTripId', 'Add Trip')">
-                        <img src="./img/addTrip.png" alt="Add Trip">
+                        <img src="public/img/addTrip.png" alt="Add Trip">
                         <span class="cH3">Add Trip</span>
                     </a>
                 </div>
                 <br><br>
                 <div class="boxBottom">
                     <a href="#" onclick="openTapMyAccount('addBusId', 'Add Bus')">
-                        <img src="./img/addBus.png" alt="Add Bus">
+                        <img src="public/img/addBus.png" alt="Add Bus">
                         <span class="cH3">Add Bus</span>
                     </a>
                 </div>
@@ -67,7 +71,7 @@
                 <div class="box">
                     <div class="row">
                         <div class="col boxBusPic">
-                            <img src="./img/bus.png" alt="Bus">
+                            <img src="public/img/bus.png" alt="Bus">
                         </div>
                         <div class="col-6 boxLeft boxRight">
                             <div class="boxBottom">
@@ -79,7 +83,7 @@
                                 <div class="row">
                                     <div class="col-sm">
                                         <div class="boxText">
-                                            <img src="./img/timimgs.png" alt="">
+                                            <img src="public/img/timimgs.png" alt="">
                                             <br>
                                             <span class="cH3">
                                                 Timings <br> 9: 00 PM 5:45AM
@@ -88,7 +92,7 @@
                                     </div>
                                     <div class="col-sm boxLeft boxRight">
                                         <div class="boxText">
-                                            <img src="./img/estimatedTime.png" alt="">
+                                            <img src="public/img/estimatedTime.png" alt="">
                                             <br>
                                             <span class="cH3">
                                                 Estimated Time <br> 5:45 Hrs
@@ -97,7 +101,7 @@
                                     </div>
                                     <div class="col-sm">
                                         <div class="boxText">
-                                            <img src="./img/seats.png" alt="">
+                                            <img src="public/img/seats.png" alt="">
                                             <br>
                                             <span class="cH3">
                                                 Seats <br> 44 Available
@@ -124,7 +128,7 @@
                 <div class="box">
                     <div class="row">
                         <div class="col boxBusPic">
-                            <img src="./img/bus.png" alt="Bus">
+                            <img src="public/img/bus.png" alt="Bus">
                         </div>
                         <div class="col-6 boxLeft boxRight">
                             <div class="boxBottom">
@@ -136,7 +140,7 @@
                                 <div class="row">
                                     <div class="col-sm">
                                         <div class="boxText">
-                                            <img src="./img/timimgs.png" alt="">
+                                            <img src="public/img/timimgs.png" alt="">
                                             <br>
                                             <span class="cH3">
                                                 Timings <br> 9: 00 PM 5:45AM
@@ -145,7 +149,7 @@
                                     </div>
                                     <div class="col-sm boxLeft boxRight">
                                         <div class="boxText">
-                                            <img src="./img/estimatedTime.png" alt="">
+                                            <img src="public/img/estimatedTime.png" alt="">
                                             <br>
                                             <span class="cH3">
                                                 Estimated Time <br> 5:45 Hrs
@@ -154,7 +158,7 @@
                                     </div>
                                     <div class="col-sm">
                                         <div class="boxText">
-                                            <img src="./img/seats.png" alt="">
+                                            <img src="public/img/seats.png" alt="">
                                             <br>
                                             <span class="cH3">
                                                 Seats <br> 44 Available
@@ -253,7 +257,7 @@
                     <div class="box">
                         <div class="row">
                             <div class="col boxBusPic">
-                                <img src="./img/bus.png" alt="Bus">
+                                <img src="public/img/bus.png" alt="Bus">
                             </div>
                             <div class="col-6 boxLeft boxRight">
                                 <div class="boxBottom">
@@ -265,7 +269,7 @@
                                     <div class="row">
                                         <div class="col-sm">
                                             <div class="boxText">
-                                                <img src="./img/timimgs.png" alt="">
+                                                <img src="public/img/timimgs.png" alt="">
                                                 <br>
                                                 <span class="cH3">
                                                     Model <br> model
@@ -274,7 +278,7 @@
                                         </div>
                                         <div class="col-sm boxLeft boxRight">
                                             <div class="boxText">
-                                                <img src="./img/estimatedTime.png" alt="">
+                                                <img src="public/img/estimatedTime.png" alt="">
                                                 <br>
                                                 <span class="cH3">
                                                     No. Plate <br> 00334
@@ -283,7 +287,7 @@
                                         </div>
                                         <div class="col-sm">
                                             <div class="boxText">
-                                                <img src="./img/seats.png" alt="">
+                                                <img src="public/img/seats.png" alt="">
                                                 <br>
                                                 <span class="cH3">
                                                     Color <br> Red
@@ -312,7 +316,7 @@
             <div class="addBus formSize tabContent" id="addBusId">
                 <form>
                     <div style="text-align: center;">
-                        <img src="./img/bus.png" alt="profile pic" height="150px" width="220px">
+                        <img src="public/img/bus.png" alt="profile pic" height="150px" width="220px">
                         <br>
                         <div class="fileChoosenContainer mx-auto" style="width: 250px;">
                             <div class="form-inline">
@@ -365,10 +369,10 @@
                     </tr>
                     <tr>
                         <td id="homeTableImage">
-                            <img src="./img/mtn.png" alt="mtn">
-                            <img src="./img/tigo.png" alt="tigo">
-                            <img src="./img/vodafone-logo-1.png" alt="vodafone">
-                            <img src="./img/Former_Visa_(company)_logo.svg.png" alt="visa">
+                            <img src="public/img/mtn.png" alt="mtn">
+                            <img src="public/img/tigo.png" alt="tigo">
+                            <img src="public/img/vodafone-logo-1.png" alt="vodafone">
+                            <img src="public/img/Former_Visa_(company)_logo.svg.png" alt="visa">
                         </td>
                     </tr>
                 </table>
@@ -393,7 +397,7 @@
                     <div class="row">
                         <div class="col-sm">
                             <div style="text-align: center;">
-                                <img src="./img/bus.png" alt="Bus" height="200px" width="300px">
+                                <img src="public/img/bus.png" alt="Bus" height="200px" width="300px">
                             </div>
                             <br><br>
                             <span class="cH3">Name:</span>
@@ -443,19 +447,13 @@
         </div>
     </div>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="./bootstrap/jquery-3.4.1.slim.min.js"></script>
-    <script src="./bootstrap/popper.min.js"></script>
-    <script src="./bootstrap/bootstrap.min.js"></script>
-
 
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="bootstrap/jquery-3.4.1.slim.min.js"></script>
-    <script src="bootstrap/popper.min.js"></script>
-    <script src="bootstrap/bootstrap.min.js"></script>
+    <script src="public/bootstrap/jquery-3.4.1.slim.min.js"></script>
+    <script src="public/bootstrap/popper.min.js"></script>
+    <script src="public/bootstrap/bootstrap.min.js"></script>
 </body>
 
 </html>

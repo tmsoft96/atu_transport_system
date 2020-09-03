@@ -1,7 +1,7 @@
 <?php
 define("DBNAME", "login_system");
 define("DBHOST", "localhost");
-define("DBUSER", "root");
+define("DBUSER", "kwakye");
 define("DBPASS", "");
 
 $msg = null;

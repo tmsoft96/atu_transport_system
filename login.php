@@ -1,4 +1,4 @@
-<?php include __DIR__ . '/db/login_server.php'; ?>
+<?php include __DIR__ . '/authentication/login_authentication.php'; ?>
 <!doctype html>
 <html lang="en">
 
@@ -7,8 +7,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="public/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="public/style/style.css">
     <title>Login</title>
 </head>
 
@@ -16,81 +16,56 @@
     <header>
         <nav class="navbar navbar-light" style="background-color: #0086FC;">
             <div id="logo">
-                <img src="./img/logo.png" alt="logo">
+                <img src="public/img/logo.png" alt="logo">
             </div>
-            <form class="form-inline">
-                <a href="index.php">Home</a>
-                <a href="bookingHistory.php">Booking History</a>
-                <a href="routes.php">Routes</a>
-                <a href="myAccount.php">
-                    <img src="./img/profilePic.png" alt="profile picture" class="rounded-circle">
-                    <span>My Account</span>
-                </a>
-            </form>
         </nav>
     </header>
+    <div class="container">
+        <div class="jumbotron d-flex justify-content-center h2 mt-3 mb-3">
+            <div class="card " style="width: 30rem;">
+                <div class="card-body">
+                    <?php
+                    if (isset($msg)) {
+                        echo '<div class="alert alert-danger h4">
+                        <p>' . $msg . '</p>
+                        </div>';
+                    }
+                    ?>
 
-    <div class="clearfix" style="background-color: #EEEEEE;">
-        <div class="accountRightContainer">
-            <span class="cH1">Login</span>
-            <br> <br>
-            <div class="continueAccount formSize">
-                <form method="POST">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" id="userName" name="username" class="form-control" aria-describedby="emailHelp" required>
+                    <div>
+                        <span class="h2 ">Login</span>
+
                     </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Password</label>
-                        <input type="password" id="password" class="form-control" name="password" required>
-                    </div>
-                    <br>
-                    <div style="text-align: right;">
-                        <button type="button" class="btn btn-light"><b><u><i>Forget Password</i></u></b></button>
-                    </div>
-                    <br><br>
-                    <button type="submit" id="submit" name="login_user" class="btn btn-success btn-lg btn-block">LOGIN</button>
-                </form>
-                <br><br><br>
-                <div style="text-align: center;">
-                  <a href="createAccount.php">  <button type="submit" id="submit" name="submit" class="btn btn-light"  ><b>Create new account</b></button></a>
+                    <form method="POST" class="mt-3">
+                        <div class="row">
+                            <div class="col">
+                                <label class="h4">Email address</label>
+                                <input type="email" id="userName" name="email" class="form-control" aria-describedby="emailHelp" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="exampleFormControlTextarea1">Password</label>
+                                <input type="password" id="password" class="form-control" name="password" required>
+                            </div>
+                        </div>
+                        <div style="text-align: right;" class="mt-3">
+                            <button type="button" class="btn btn-light"><b><u><i>Forget Password</i></u></b></button>
+                        </div>
+                        <div class="mt-3">
+                            <button type="submit" id="submit" name="submit-btn" class="btn btn-success btn-lg btn-block">LOGIN</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="footer">
-        <nav class="navbar navbar-light" style="background-color: #EEEEEE;">
-            <a class="navbar-brand"></a>
-            <form class="form-inline">
-                <table>
-                    <tr>
-                        <td><span class="cH3">
-                                Our payment options
-                            </span></td>
-                    </tr>
-                    <tr>
-                        <td id="homeTableImage">
-                            <img src="./img/mtn.png" alt="mtn">
-                            <img src="./img/tigo.png" alt="tigo">
-                            <img src="./img/vodafone-logo-1.png" alt="vodafone">
-                            <img src="./img/Former_Visa_(company)_logo.svg.png" alt="visa">
-                        </td>
-                    </tr>
-                </table>
-            </form>
-        </nav>
-        <div id="copyright">
-            Copyright © 2020 Group 6. All rights reserved.
-            </span>
-        </div>
-
-
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="bootstrap/jquery-3.4.1.slim.min.js"></script>
-        <script src="bootstrap/popper.min.js"></script>
-        <script src="bootstrap/bootstrap.min.js"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="public/bootstrap/jquery-3.4.1.slim.min.js"></script>
+    <script src="public/bootstrap/popper.min.js"></script>
+    <script src="public/bootstrap/bootstrap.min.js"></script>
 </body>
 
 </html>
