@@ -1,4 +1,4 @@
-<div class="footer">
+<div class="footer mt-5">
     <nav class="navbar navbar-light" style="background-color: #EEEEEE;">
         <a class="navbar-brand"></a>
         <form class="form-inline">

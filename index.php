@@ -2,10 +2,10 @@
 session_start();
 include __DIR__ . "/base_url.php";
 include __DIR__ . "/controller/RouteController.php";
+include __DIR__ . "/controller/AuthController.php";
+checkUserIsLoggedIn();
 $pageName = "homepage";
 $_SESSION['active'] = 'homepage';
-// include "config/conn.php";
-// include __DIR__ . "/login/sessions.php";
 
 
 
