@@ -1,9 +1,9 @@
 <?php
-// session_start();
+session_start();
 include __DIR__ . "/base_url.php";
 include __DIR__ . "/controller/RouteController.php";
 $pageName = "homepage";
-// $_SESSION['active'] = 'dashboard';
+$_SESSION['active'] = 'homepage';
 // include "config/conn.php";
 // include __DIR__ . "/login/sessions.php";
 
@@ -82,7 +82,7 @@ getNavbar(true);
         </div>
 
     </div>
-
+</div>
 
 
 <?php

@@ -10,27 +10,26 @@
                 </tr>
                 <tr>
                     <td id="homeTableImage">
-                        <img src="public/img/mtn.png" alt="mtn">
-                        <img src="public/img/tigo.png" alt="tigo">
-                        <img src="public/img/vodafone-logo-1.png" alt="vodafone">
-                        <img src="public/img/Former_Visa_(company)_logo.svg.png" alt="visa">
+                        <img src="<?= APP_URL?>/public/img/mtn.png" alt="mtn">
+                        <img src="<?= APP_URL?>/public/img/tigo.png" alt="tigo">
+                        <img src="<?= APP_URL?>/public/img/vodafone-logo-1.png" alt="vodafone">
+                        <img src="<?= APP_URL?>/public/img/Former_Visa_(company)_logo.svg.png" alt="visa">
                     </td>
                 </tr>
             </table>
         </form>
+        <div id="copyright">
+            Copyright © <?= date("Y"); ?> Group 6. All rights reserved.
+         
+        </div>
     </nav>
-    <div id="copyright">
-        Copyright © <?= date("Y"); ?> Group 6. All rights reserved.
-        </span>
-    </div>
 </div>
 
-</div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="public/bootstrap/jquery-3.4.1.slim.min.js"></script>
-<script src="public/bootstrap/popper.min.js"></script>
-<script src="public/bootstrap/bootstrap.min.js"></script>
+<script src="<?= APP_URL?>/public/bootstrap/jquery-3.4.1.slim.min.js"></script>
+<script src="<?= APP_URL?>/public/bootstrap/popper.min.js"></script>
+<script src="<?= APP_URL?>/public/bootstrap/bootstrap.min.js"></script>
 </body>
 
 </html>
