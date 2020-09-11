@@ -1,3 +1,4 @@
+<?php include __DIR__ . '/authentication/create_account.php'; ?>
 <!doctype html>
 <html lang="en">
 
@@ -26,29 +27,38 @@
         <div class="jumbotron d-flex justify-content-center h4 mt-3 mb-3">
             <div class="card" style="width: 30rem;">
                 <div class="card-body">
+                    <?php
+                    if (isset($msg)) {
+                        echo '<div class="alert alert-danger h5">
+                        <p>' . $msg . '</p>
+                        </div>';
+                    }
+                    ?>
                     <form class="mt-3" method="POST">
                         <div class="row">
                             <div class="col">
-                                <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                <label>Email address</label>
+                                <input type="email" name="email" class="form-control" id="email"
+                                 aria-describedby="emailHelp" value="<?php echo $_SESSION['email'] ?>" required>
                             </div>
                         </div>
                         <br>
                         <div class="row">
                             <div class="col">
-                                <label for="exampleFormControlTextarea1">Password</label>
-                                <input type="password" name="password" class="form-control" id="exampleInputEmail1">
+                                <label>Password</label>
+                                <input type="password" name="password" class="form-control" id="password" 
+                                value="<?php echo $_SESSION['password'] ?>" required>
                             </div>
                         </div>
                         <br>
                         <div class="row">
                             <div class="col">
-                                <label for="exampleFormControlTextarea1">Confirm Password</label>
-                                <input type="password" name="password" class="form-control" id="exampleInputEmail1">
+                                <label>Confirm Password</label>
+                                <input type="password" name="confirm-password" class="form-control" required>
                             </div>
                         </div>
                         <br><br>
-                        <button type="submit" class="btn btn-success btn-lg btn-block">Register</button>
+                        <button type="submit" class="btn btn-success btn-lg btn-block" name="submit-btn">Register</button>
                     </form>
                 </div>
             </div>

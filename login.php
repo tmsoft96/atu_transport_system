@@ -27,7 +27,7 @@
                 <div class="card-body">
                     <?php
                     if (isset($msg)) {
-                        echo '<div class="alert alert-danger h4">
+                        echo '<div class="alert alert-danger h5">
                         <p>' . $msg . '</p>
                         </div>';
                     }
