@@ -21,7 +21,8 @@
         </nav>
     </header>
     <div class="container">
-        <div class="jumbotron d-flex justify-content-center h2 mt-3 mb-3">
+        <span class="cH1">Login</span>
+        <div class="jumbotron d-flex justify-content-center h4 mt-3 mb-3">
             <div class="card " style="width: 30rem;">
                 <div class="card-body">
                     <?php
@@ -31,11 +32,6 @@
                         </div>';
                     }
                     ?>
-
-                    <div>
-                        <span class="h2 ">Login</span>
-
-                    </div>
                     <form method="POST" class="mt-3">
                         <div class="row">
                             <div class="col">
@@ -43,6 +39,7 @@
                                 <input type="email" id="userName" name="email" class="form-control" aria-describedby="emailHelp" required>
                             </div>
                         </div>
+                        <br>
                         <div class="row">
                             <div class="col">
                                 <label for="exampleFormControlTextarea1">Password</label>
@@ -52,13 +49,23 @@
                         <div style="text-align: right;" class="mt-3">
                             <button type="button" class="btn btn-light"><b><u><i>Forget Password</i></u></b></button>
                         </div>
+                        <br>
                         <div class="mt-3">
                             <button type="submit" id="submit" name="submit-btn" class="btn btn-success btn-lg btn-block">LOGIN</button>
                         </div>
                     </form>
                 </div>
             </div>
+
+
         </div>
+        <br><br>
+        <div class="d-flex justify-content-center">
+            <button type="button" class="btn btn-light" onclick="javascript: window.location.href = 'createAccount.php'">
+                <div class="h4">Create new account</div>
+            </button>
+        </div>
+
     </div>
 
     <!-- Optional JavaScript -->

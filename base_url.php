@@ -1,2 +1,2 @@
 <?php
-define("APP_URL","/projects/transport");
+define("APP_URL","/busticket");

@@ -1,10 +1,6 @@
 <?php
 session_start();
 $msg = null;
-$_SESSION['fText'] = "";
-$_SESSION['lText'] = "";
-$_SESSION['eText'] = "";
-$_SESSION['uText'] = "";
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['cPassword'])) {
     include __DIR__ . "/../config.php";
     try {
@@ -26,19 +22,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['firstname']) && isset(
             throw new LogicException("User already exit");
         }
 
-        //confirming password match
-        if ($password != $cPassword) {
-            //saving data if password error
-            $_SESSION['fText'] = $firstName;
-            $_SESSION['lText'] = $lastname;
-            $_SESSION['uText'] = $username;
-            $_SESSION['eText'] = $email;
-            throw new LogicException("Password do not match");
-        }
-
         //registering user
         //encripting password
-        $pass = md5($password);
+        $pass = password_hash($password, PASSWORD_DEFAULT);
         $r_sql = $conn->prepare("INSERT INTO users (first_name, last_name, username, email, password) VALUES (:first_name, :last_name, :username, :email, :password)");
         $r_sql->bindParam(":first_name", $firstName);
         $r_sql->bindParam(":last_name", $lastname);
