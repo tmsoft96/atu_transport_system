@@ -21,6 +21,11 @@
                 </ul>
                 <ul class="navbar-nav">
                     <form class="form-inline">
+
+                        <li class="nav-item">
+                            <a class="nav-link <?php if (isset($_SESSION['role']) && $_SESSION['role'] == "admin") echo 'visible';
+                                                else echo 'invisible'; ?> " href="<?= APP_URL ?>/admin.php">Admin</a>
+                        </li>
                         <li>
                             <a href="<?= APP_URL ?>/myAccount.php">
                                 <img src="<?php
@@ -29,7 +34,7 @@
                                             } else {
                                                 echo  APP_URL . "/public/img/profilePic.jpg";
                                             }
-                                            ?>" alt="profile pic"  class="rounded-circle">
+                                            ?>" alt="profile pic" class="rounded-circle">
 
                                 <span>My Account</span>
                             </a>
