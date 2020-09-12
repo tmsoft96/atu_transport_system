@@ -201,39 +201,38 @@ getNavbar(true);
                     <input type="text" class="form-control" placeholder="Bus stops" name="bus-stops">
                 </div>
                 <br>
-                <label>Destination time and date</label>
+                <label>Departure time and date</label>
                 <div class="row">
                     <div class="col">
                         <label>Time</label>
-                        <input type="time" class="form-control" placeholder="time" name="destination-time">
+                        <input type="time" class="form-control" placeholder="time" name="departure-time">
                     </div>
                     <div class="col">
                         <label>Date</label>
-                        <input type="date" class="form-control" placeholder="date" name="destination-date">
+                        <input type="date" class="form-control" placeholder="date" name="departure-date">
                     </div>
-                </div>
-                <br>
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Name">
                 </div>
                 <br>
                 <label>Arrival time</label>
                 <div class="row">
                     <div class="col">
                         <label>Time</label>
-                        <input type="time" class="form-control" placeholder="time">
+                        <input type="time" class="form-control" placeholder="time" name="arrival-time">
                     </div>
-                    <div class="col"></div>
+                    <div class="col">
+                        <label>Time</label>
+                        <input type="date" class="form-control" placeholder="time" name="arrival-date">
+                    </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col">
                         <label>Amount(GHS)</label>
-                        <input type="number" class="form-control" placeholder="Amount(GHS)">
+                        <input type="number" class="form-control" placeholder="Amount(GHS)" name="amount">
                     </div>
                     <div class="col">
                         <label>Discount(%) (Only visible for round trips)</label>
-                        <input type="number" class="form-control" placeholder="Discount(%)">
+                        <input type="number" class="form-control" placeholder="Discount(%)" name="discount">
                     </div>
                 </div>
                 <br><br>
@@ -241,6 +240,7 @@ getNavbar(true);
             </div>
             <div class="selectBus tabContent" id="selectBusId">
                 <div class="box">
+                    <input type="hidden" name="bus-id">
                     <div class="row">
                         <div class="col boxBusPic">
                             <img src="public/img/bus.png" alt="Bus">
@@ -296,18 +296,20 @@ getNavbar(true);
                     </div>
                 </div>
                 <br><br>
-                <button type="button" class="btn btn-success btn-lg btn-block">Add Trip</button>
+                <button type="submit" class="btn btn-success btn-lg btn-block">Add Trip</button>
             </div>
         </form>
+
+
         <div class="addBus formSize tabContent" id="addBusId">
-            <form>
+            <form method="POST">
                 <div style="text-align: center;">
-                    <img src="public/img/bus.png" alt="profile pic" height="150px" width="220px">
+                    <img src="public/img/bus.png" alt="Bus" height="150px" width="220px" id="profilePic">
                     <br>
                     <div class="fileChoosenContainer mx-auto" style="width: 250px;">
                         <div class="form-inline">
                             <div class="form-group mb-2">
-                                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                <input type="file" class="form-control-file" id="profilePictureInput" accept="image/*" onchange="uploadProfilePicture()" name="bus-pic">
                             </div>
                         </div>
                     </div>
@@ -316,59 +318,40 @@ getNavbar(true);
                 <div class="row">
                     <div class="col">
                         <label>Model</label>
-                        <input type="text" class="form-control" placeholder="model">
+                        <input type="text" class="form-control" placeholder="model" name="model">
                     </div>
                     <div class="col">
                         <label>Number plate</label>
-                        <input type="text" class="form-control" placeholder="Number plate">
+                        <input type="text" class="form-control" placeholder="Number plate" name="plate">
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col">
                         <label>Color</label>
-                        <input type="color" class="form-control" placeholder="color">
+                        <input type="color" class="form-control" placeholder="color" name="color">
                     </div>
                     <div class="col">
                         <label>Total Seat</label>
-                        <input type="number" class="form-control" placeholder="total seat">
+                        <input type="number" class="form-control" placeholder="total seat" name="total-seat">
                     </div>
                 </div>
                 <br><br>
-                <button type="button" class="btn btn-success btn-lg btn-block">Add Bus</button>
+                <button type="submit" class="btn btn-success btn-lg btn-block">Add Bus</button>
             </form>
         </div>
 
     </div>
 </div>
-
-
-<div class="footer">
-    <nav class="navbar navbar-light" style="background-color: #EEEEEE;">
-        <a class="navbar-brand"></a>
-        <form class="form-inline">
-            <table>
-                <tr>
-                    <td><span class="cH3">
-                            Our payment options
-                        </span></td>
-                </tr>
-                <tr>
-                    <td id="homeTableImage">
-                        <img src="public/img/mtn.png" alt="mtn">
-                        <img src="public/img/tigo.png" alt="tigo">
-                        <img src="public/img/vodafone-logo-1.png" alt="vodafone">
-                        <img src="public/img/Former_Visa_(company)_logo.svg.png" alt="visa">
-                    </td>
-                </tr>
-            </table>
-        </form>
-    </nav>
-    <div id="copyright">
-        Copyright © 2020 Group 6. All rights reserved.
-        </span>
-    </div>
-</div>
+<?php
+getFooter(true);
+?>
+<script src="<?= APP_URL ?>/function/script.js"></script>
+<script>
+    $(function() {
+        openTapMyAccount('schedulesId', 'Schedules');
+    });
+</script>
 
 <div class="modal fade" id="bookSummaryModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
@@ -432,12 +415,3 @@ getNavbar(true);
         </div>
     </div>
 </div>
-<?php
-getFooter(true);
-?>
-<script src="<?= APP_URL ?>/function/script.js"></script>
-<script>
-    $(function() {
-        openTapMyAccount('schedulesId', 'Schedules');
-    });
-</script>
