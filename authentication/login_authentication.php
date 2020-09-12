@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit-btn']) && isset
         $email = $_POST['email'];
         $pass = $_POST['password'];
 
-        $sql = $conn->prepare("SELECT * FROM tbluser WHERE email = :email");
+        $sql = $conn->prepare("SELECT * FROM users WHERE email = :email");
         $sql->bindParam(":email", $email);
         $exe = $sql->execute();
 
@@ -29,19 +29,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit-btn']) && isset
         if (!password_verify($pass, $user->password)) {
             throw new LogicException("Wrong password entered");
         }
+
         
-        // $password = md5($pass);
-
-        // if ($password != $user->password) {
-        //     throw new LogicException("Incorrect password entered");
-        // }
-
-        $_SESSION['username'] = $user->username;
-        $_SESSION['firstname'] = $user->fname;
-        $_SESSION['lastname'] = $user->lname;
-        $_SESSION['email'] = $user->email;
         $_SESSION['logged'] = true;
-
         header('location: ' . APP_URL . '/index.php');
 
         exit;

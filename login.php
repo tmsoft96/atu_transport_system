@@ -31,6 +31,11 @@
                         <p>' . $msg . '</p>
                         </div>';
                     }
+                    if(isset($_SESSION['msg']) || $_SESSION['msg'] != "") {
+                        echo '<div class="alert alert-info h5">
+                        <p>' . $_SESSION['msg'] . '</p>
+                        </div>';
+                    }
                     ?>
                     <form method="POST" class="mt-3">
                         <div class="row">

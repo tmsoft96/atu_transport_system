@@ -38,7 +38,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit-btn']) && isset
 
         $_SESSION['email'] = "";
         $_SESSION['password'] = "";
-        $_SESSION['registered'] = true;
         $_SESSION['msg'] = "Account created successfully";
 
         //redirecting user to login page
