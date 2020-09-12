@@ -37,15 +37,14 @@
                         </div>';
                     }
                     ?>
-                    <form class="mt-3" method="POST">
+                    <form class="mt-3" method="POST" enctype="multipart/form-data" action="authentication/register_acount.php">
                         <div style="text-align: center;">
                             <img src="public/img/profilePic.jpg" alt="profile pic" height="150px" width="150px" class="rounded-circle" id="profilePic">
                             <br>
                             <div class="fileChoosenContainer mx-auto h6" style="width: 250px;">
                                 <div class="form-inline">
                                     <div class="form-group mb-2">
-                                        <input type="file" class="form-control-file" id="profilePictureInput" accept="image/*" onchange="uploadProfilePicture()">
-                                        <input type="hidden" name="profile-pic" id="hiddenPic">
+                                        <input type="file" class="form-control-file" id="profilePictureInput" accept="image/*" onchange="uploadProfilePicture()" name="profile-pic">
                                     </div>
                                 </div>
                             </div>

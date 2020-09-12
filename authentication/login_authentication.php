@@ -31,6 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit-btn']) && isset
         }
 
         $_SESSION['email'] = $user->email;
+        $_SESSION['profilePic'] = $user->image;
         $_SESSION['msg'] = null;
         $_SESSION['logged'] = true;
         header('location: ' . APP_URL . '/index.php');

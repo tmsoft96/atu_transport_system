@@ -13,7 +13,4 @@ function uploadProfilePicture(){
     let profilePictureInput = document.getElementById("profilePictureInput");
     let path = window.URL.createObjectURL(profilePictureInput.files[0])
     profilePic.src= path;
-
-    let hiddenPic = document.getElementById("hiddenPic");
-    hiddenPic.value = path;
 }

@@ -3,10 +3,11 @@ session_start();
 include __DIR__ . "/base_url.php";
 include __DIR__ . "/controller/RouteController.php";
 include __DIR__ . "/controller/AuthController.php";
+include __DIR__ . "/controller/userDetailsController.php";
 checkUserIsLoggedIn();
 
-
-
+$_SESSION['active'] = null;
+$pageName = "My Account";
 getHead(true, $pageName);
 
 getNavbar(true);
@@ -17,8 +18,22 @@ getNavbar(true);
     <div class="float-left">
         <div class="accountLeftContainer">
             <div class="accountLeftPic">
-                <img src="public/img/profilePic.png" alt="profile pic">
-                <span class="cH2">Name</span>
+                <div class="row">
+                    <div class="col">
+                        <img src="<?php
+                                    if (isset($profileImage)) {
+                                        echo  APP_URL . "/uploads/" . $profileImage;
+                                    } else {
+                                        echo  APP_URL . "/public/img/profilePic.jpg";
+                                    }
+                                    ?>" alt="profile pic" height="70px" width="70px" class="rounded-circle">
+                    </div>
+                    <div class="col">
+                        <span class="cH2"><?= ucwords($name)  ?></span>
+                    </div>
+                </div>
+
+
             </div>
             <div class="boxBottom">
                 <a href="#" onclick="openTapMyAccount('myProfileId', 'My Profile')">
@@ -49,7 +64,7 @@ getNavbar(true);
         <div class="myProfile formSize tabContent" id="myProfileId">
             <form class="mb-5" id="update-form">
                 <div style="text-align: center;">
-                    <img src="public/img/profilePic.png" alt="profile pic" height="150px" width="150px">
+                    <img src="public/img/profilePic.jpg" alt="profile pic" height="150px" width="150px">
                     <br>
                     <div class="fileChoosenContainer mx-auto" style="width: 250px;">
                         <div class="form-inline">

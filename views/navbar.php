@@ -1,6 +1,3 @@
-<?php
-    include __DIR__ . "/../controller/userDetailsController.php";
-?>
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #0086FC;">
@@ -26,13 +23,13 @@
                     <form class="form-inline">
                         <li>
                             <a href="<?= APP_URL ?>/myAccount.php">
-                                <?php
-                                if (isset($profileImage)) {
-                                    echo "<img src=\"" . $profileImage . "\" alt=\"profile picture\" class=\"rounded-circle\">";
-                                } else {
-                                    echo "<img src=\"" . APP_URL . "/public/img/profilePic.jpg\" alt=\"profile picture\" class=\"rounded-circle\">";
-                                }
-                                ?>
+                                <img src="<?php
+                                            if (isset($_SESSION['profilePic'])) {
+                                                echo  APP_URL . "/uploads/" . $_SESSION['profilePic'];
+                                            } else {
+                                                echo  APP_URL . "/public/img/profilePic.jpg";
+                                            }
+                                            ?>" alt="profile pic"  class="rounded-circle">
 
                                 <span>My Account</span>
                             </a>

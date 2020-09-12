@@ -1,5 +1,4 @@
 <?php
-$profileImage;
 $email = $_SESSION['email'];
 if (isset($_SESSION['logged'])) {
     include __DIR__ . "/../config.php";
@@ -15,4 +14,6 @@ if (isset($_SESSION['logged'])) {
     $user = $sql->fetch(PDO::FETCH_OBJ);
 
     $profileImage = $user->image;
+    $name = $user->name;
+    $_SESSION['profilePic'] = $profileImage;
 }

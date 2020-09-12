@@ -1,11 +1,19 @@
 <?php
 session_start();
 $msg = null;
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit-btn']) && isset($_POST['name']) && isset($_POST['profile-pic']) && isset($_POST['phone']) && isset($_POST['email']) && isset($_POST['address']) && isset($_POST['kin-name']) && isset($_POST['kin-phone']) && isset($_POST['kin-email'])) {
+
+if (isset($_POST['submit-btn'])) {
     include __DIR__ . "/../config.php";
+    $fileTmp = $_FILES['profile-pic']["tmp_name"];
+    $fileName = $_FILES['profile-pic']["name"];
+    $fileExt = explode(".", $fileName);
+    $fileActualExt = strtolower(end($fileExt));
+    $fileActualName = time() . ".". $fileActualExt;
+    move_uploaded_file($fileTmp, "../uploads/" . $fileActualName);
+
     try {
         $name = $_POST['name'];
-        $profilePic = $_POST['profile-pic'];
+        $profilePic = $fileActualName;
         $phone = $_POST['phone'];
         $email = $_POST['email'];
         $password = $_SESSION['password'];
@@ -41,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit-btn']) && isset
         $_SESSION['msg'] = "Account created successfully";
 
         //redirecting user to login page
-        header("location: login.php");
+        header("location: ../login.php");
     } catch (LogicException $th) {
         $msg = $th->getMessage();
     } catch (Exception $ex) {
