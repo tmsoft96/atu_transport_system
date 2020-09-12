@@ -139,20 +139,21 @@ getNavbar(true);
         </div>
 
         <div class="changePassword formSize tabContent" id="changePasswordId">
-            <form>
+            <form method="POST">
+            <input type="hidden" name="user-id" value="<?= ucwords($userId) ?>">
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Current Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <label>Current Password</label>
+                    <input type="password" class="form-control" id="password" name="password">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">New Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <label>New Password</label>
+                    <input type="password" class="form-control" id="newPassword" name="new-password">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Confirm Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <label>Confirm Password</label>
+                    <input type="password" class="form-control" id="confirmPassword" name="confirm-password">
                 </div>
-                <button type="submit" class="btn btn-success btn-lg btn-block">Change Password</button>
+                <button type="submit" name="change_password" class="btn btn-success btn-lg btn-block">Change Password</button>
             </form>
 
         </div>

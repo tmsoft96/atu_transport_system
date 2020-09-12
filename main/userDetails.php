@@ -58,7 +58,7 @@ if (isset($_POST['submit-update'])) {
 
         $_SESSION['msg_update'] = "Account updated successfully";
 
-        //redirecting user to login page
+        //redirecting user to my account page
         header("location: ../myAccount.php");
     } catch (LogicException $th) {
         $msg = $th->getMessage();
@@ -67,6 +67,47 @@ if (isset($_POST['submit-update'])) {
     }
 }
 
-if (isset($_POST['submit-password'])){
-    
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['change_password']) && isset($_POST['password'])  && isset($_POST['new-password'])  && isset($_POST['confirm-password']) && isset($_POST['user-id'])) {
+    $_SESSION['msg_update'] = null;
+    try {
+        $userId = $_POST['user-id'];
+        $password = $_POST['password'];
+        $newPassword = $_POST['new-password'];
+        $confirmPassword = $_POST['confirm-password'];
+
+        //checking user if old password = current password entered
+        $sql = $conn->prepare("SELECT * FROM users WHERE id = :id");
+        $sql->bindParam(":id", $userId);
+        $sql->execute();
+
+        $user = $sql->fetch(PDO::FETCH_OBJ);
+
+        if ($newPassword != $confirmPassword) {
+            throw new LogicException("Password do not match");
+        }
+
+        if (!password_verify($password, $user->password)) {
+            throw new LogicException("Wrong password entered");
+        }
+
+        //updating user password
+        //encripting password
+        $pass = password_hash($newPassword, PASSWORD_DEFAULT);
+        $u_sql = $conn->prepare("UPDATE users SET password = :password WHERE id = :id");
+        $u_sql->bindParam(":password", $pass);
+        $u_sql->bindParam(":id", $userId);
+        $up_exe = $u_sql->execute();
+
+        if (!$up_exe) {
+            throw new LogicException("Unable to reset password");
+        }
+
+        $_SESSION['msg_update'] = "Password reset successfully";
+
+        header("location: myAccount.php");
+    } catch (LogicException $th) {
+        $msg = $th->getMessage();
+    } catch (Exception $t) {
+        $msg = $t->getMessage();
+    }
 }
