@@ -1,3 +1,6 @@
+<?php
+    include __DIR__ . "/../controller/userDetailsController.php";
+?>
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #0086FC;">
@@ -23,19 +26,26 @@
                     <form class="form-inline">
                         <li>
                             <a href="<?= APP_URL ?>/myAccount.php">
-                                <img src="<?= APP_URL ?>/public/img/profilePic.jpg" alt="profile picture" class="rounded-circle">
+                                <?php
+                                if (isset($profileImage)) {
+                                    echo "<img src=\"" . $profileImage . "\" alt=\"profile picture\" class=\"rounded-circle\">";
+                                } else {
+                                    echo "<img src=\"" . APP_URL . "/public/img/profilePic.jpg\" alt=\"profile picture\" class=\"rounded-circle\">";
+                                }
+                                ?>
+
                                 <span>My Account</span>
                             </a>
                         </li>
                         <li>
-                            <?php 
-                                if (isset($_SESSION['logged'])){
-                                    echo "<a class=\"btn btn-info\" href=\"" . APP_URL . "/logout.php\">Logout</a>";
-                                } else {
-                                    echo "<a class=\"btn btn-info\" href=\"" . APP_URL . "/logout.php\">Login</a>";
-                                }
+                            <?php
+                            if (isset($_SESSION['logged'])) {
+                                echo "<a class=\"btn btn-info\" href=\"" . APP_URL . "/logout.php\">Logout</a>";
+                            } else {
+                                echo "<a class=\"btn btn-info\" href=\"" . APP_URL . "/logout.php\">Login</a>";
+                            }
                             ?>
-                            
+
                         </li>
 
                     </form>

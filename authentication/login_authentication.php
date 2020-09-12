@@ -30,6 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit-btn']) && isset
             throw new LogicException("Wrong password entered");
         }
 
+        $_SESSION['email'] = $user->email;
         $_SESSION['msg'] = null;
         $_SESSION['logged'] = true;
         header('location: ' . APP_URL . '/index.php');

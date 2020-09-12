@@ -10,7 +10,6 @@ $_SESSION['active'] = 'homepage';
 
 
 getHead(true, $pageName);
-
 getNavbar(true);
 ?>
 <style>
