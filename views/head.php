@@ -27,6 +27,10 @@
         color: green;
     }
 
+    .navbar-light .navbar-nav .nav-link {
+        color: white;
+    }
+
     /*code to change background color*/
     .navbar-nav>.active>a {
         background-color: white;

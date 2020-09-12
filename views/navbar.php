@@ -23,12 +23,19 @@
                     <form class="form-inline">
                         <li>
                             <a href="<?= APP_URL ?>/myAccount.php">
-                                <img src="<?= APP_URL ?>/public/img/profilePic.png" alt="profile picture" class="rounded-circle">
+                                <img src="<?= APP_URL ?>/public/img/profilePic.jpg" alt="profile picture" class="rounded-circle">
                                 <span>My Account</span>
                             </a>
                         </li>
                         <li>
-                            <a class="btn btn-info" href="<?= APP_URL ?>/logout.php">Logout</a>
+                            <?php 
+                                if (isset($_SESSION['logged'])){
+                                    echo "<a class=\"btn btn-info\" href=\"" . APP_URL . "/logout.php\">Logout</a>";
+                                } else {
+                                    echo "<a class=\"btn btn-info\" href=\"" . APP_URL . "/logout.php\">Login</a>";
+                                }
+                            ?>
+                            
                         </li>
 
                     </form>
