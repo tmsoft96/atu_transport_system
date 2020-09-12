@@ -6,7 +6,7 @@ include __DIR__ . "/controller/RouteController.php";
 // checkUserIsLoggedIn();
 $pageName = "homepage";
 $_SESSION['active'] = 'homepage';
-
+$_SESSION['msg_update'] = null;
 
 
 getHead(true, $pageName);

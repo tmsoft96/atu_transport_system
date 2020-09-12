@@ -6,6 +6,7 @@ include __DIR__ . "/../controller/AuthController.php";
 checkUserIsLoggedIn();
 $pageName = "Bus Routes";
 $_SESSION['active'] = 'routes';
+$_SESSION['msg_update'] = null;
 
 getHead(false, $pageName);
 
