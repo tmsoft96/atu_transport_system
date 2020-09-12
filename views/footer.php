@@ -1,6 +1,5 @@
-<div class="footer mt-5">
+<div class=" mt-5">
     <nav class="navbar navbar-light" style="background-color: #EEEEEE;">
-        <a class="navbar-brand"></a>
         <form class="form-inline">
             <table>
                 <tr>
@@ -20,7 +19,6 @@
         </form>
         <div id="copyright">
             Copyright © <?= date("Y"); ?> Group 6. All rights reserved.
-         
         </div>
     </nav>
 </div>

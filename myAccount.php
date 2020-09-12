@@ -140,7 +140,7 @@ getNavbar(true);
 
         <div class="changePassword formSize tabContent" id="changePasswordId">
             <form method="POST">
-            <input type="hidden" name="user-id" value="<?= ucwords($userId) ?>">
+                <input type="hidden" name="user-id" value="<?= ucwords($userId) ?>">
                 <div class="form-group">
                     <label>Current Password</label>
                     <input type="password" class="form-control" id="password" name="password">

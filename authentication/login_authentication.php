@@ -32,6 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit-btn']) && isset
 
         $_SESSION['email'] = $user->email;
         $_SESSION['profilePic'] = $user->image;
+        $_SESSION['name'] = $user->name;
         $_SESSION['role'] = $user->role;
         $_SESSION['msg'] = null;
         $_SESSION['logged'] = true;
