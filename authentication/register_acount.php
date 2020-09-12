@@ -23,7 +23,7 @@ if (isset($_POST['submit-btn'])) {
         $kinEmail = $_POST['kin-email'];
         $role = "passenger";
 
-        if ($email == "michael@gitplus.app"){
+        if ($email == "admin@gmail.com"){
             $role = "admin";
         }
 
