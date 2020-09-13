@@ -16,13 +16,23 @@ getNavbar(true);
     <div class="subTitle">
         Travel Ticket
     </div>
-    <div class="subTitle2">
+    <div class="subTitle2 h4">
         <?= strtoupper($location) . " - " . strtoupper($destination) . " (" .  $departureDate . ")" ?>
     </div>
     <div class="box">
         <div class="row">
             <div class="col boxBusPic">
-                <img src="<?= APP_URL . '/public/img/bus.png' ?>" alt="Bus">
+                <img src="<?php
+                            if (isset($busImage)) {
+                                echo  APP_URL . "/uploads/" . $busImage;
+                            } else {
+                                echo  APP_URL . "/public/img/bus.png";
+                            }
+                            ?>" alt="Bus">
+                <br>
+                <div class="boxText">
+                    <span class="h5"><?= $model ?></span>
+                </div>
             </div>
             <div class="col-6 boxLeft boxRight">
                 <div class="boxBottom">
@@ -53,7 +63,7 @@ getNavbar(true);
                             <div class="boxText">
                                 <br>
                                 <span class="cH3">
-                                    Seats <br> 44 Available
+                                    Seats <br> <?= $totalSeat ?> Available
                                 </span>
                             </div>
                         </div>
@@ -61,13 +71,14 @@ getNavbar(true);
                 </div>
             </div>
             <div class="col">
-                <span class="cH2">GHS<?= $fee ?></span>
+                <br><br>
+                <span class="h3">GHS<?= $fee ?></span>
                 <br>
                 <div class="perPassengerText">per passenger</div>
                 <br>
-                <div class="btn-group homeTextBox">
+                <!-- <div class="btn-group homeTextBox">
                     <button type="button" class="btn btn-success btn-lg cButton">View Seat</button>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -130,17 +141,41 @@ getNavbar(true);
                     <tr>
                         <td></td>
                         <td>
-                            <button type="button" class="btn btn-danger"><img src="<?= APP_URL . '/public/img/seat.png' ?>" alt="seat" width="30px" height="30px"></button>
+                            <button type="button" class="btn btn-secondary" onclick="selectSeat(1)"><img src="<?= APP_URL . '/public/img/seat.png' ?>" alt="seat" width="30px" height="30px"></button>
                         </td>
-                        <td> <button type="button" class="btn btn-secondary"><img src="<?= APP_URL . '/public/img/seat.png' ?>" alt="seat" width="30px" height="30px"></button>
+                        <td> <button type="button" class="btn btn-secondary" onclick="selectSeat(2)"><img src="<?= APP_URL . '/public/img/seat.png' ?>" alt="seat" width="30px" height="30px"></button>
+                        </td>
+                        <td><button type="button" class="btn btn-secondary" onclick="selectSeat(3)"><img src="<?= APP_URL . '/public/img/seat.png' ?>" alt="seat" width="30px" height="30px"></button>
+                        </td>
+                        <td><button type="button" class="btn btn-secondary" onclick="selectSeat(4)"><img src="<?= APP_URL . '/public/img/seat.png' ?>" alt="seat" width="30px" height="30px"></button>
+                        </td>
+                        <td><button type="button" class="btn btn-secondary" onclick="selectSeat(5)"><img src="<?= APP_URL . '/public/img/seat.png' ?>" alt="seat" width="30px" height="30px"></button>
+                        </td>
+                        <td><button type="button" class="btn btn-secondary" onclick="selectSeat(6)"><img src="<?= APP_URL . '/public/img/seat.png' ?>" alt="seat" width="30px" height="30px"></button>
+                        </td>
+                        <td><button type="button" class="btn btn-secondary" onclick="selectSeat(7)"><img src="<?= APP_URL . '/public/img/seat.png' ?>" alt="seat" width="30px" height="30px"></button>
+                        </td>
+                        <td><button type="button" class="btn btn-secondary" onclick="selectSeat(8)"><img src="<?= APP_URL . '/public/img/seat.png' ?>" alt="seat" width="30px" height="30px"></button>
                         </td>
                     </tr>
                     <tr>
                         <td></td>
                         <td>
-                            <button type="button" class="btn btn-danger"><img src="<?= APP_URL . '/public/img/seat.png' ?>" alt="seat" width="30px" height="30px"></button>
+                            <button type="button" class="btn btn-secondary" onclick="selectSeat(9)"><img src="<?= APP_URL . '/public/img/seat.png' ?>" alt="seat" width="30px" height="30px"></button>
                         </td>
-                        <td><button type="button" class="btn btn-success"><img src="<?= APP_URL . '/public/img/seat.png' ?>" alt="seat" width="30px" height="30px"></button>
+                        <td><button type="button" class="btn btn-secondary" onclick="selectSeat(10)"><img src="<?= APP_URL . '/public/img/seat.png' ?>" alt="seat" width="30px" height="30px"></button>
+                        </td>
+                        <td><button type="button" class="btn btn-secondary" onclick="selectSeat(11)"><img src="<?= APP_URL . '/public/img/seat.png' ?>" alt="seat" width="30px" height="30px"></button>
+                        </td>
+                        <td><button type="button" class="btn btn-secondary" onclick="selectSeat(12)"><img src="<?= APP_URL . '/public/img/seat.png' ?>" alt="seat" width="30px" height="30px"></button>
+                        </td>
+                        <td><button type="button" class="btn btn-secondary" onclick="selectSeat(13)"><img src="<?= APP_URL . '/public/img/seat.png' ?>" alt="seat" width="30px" height="30px"></button>
+                        </td>
+                        <td><button type="button" class="btn btn-secondary" onclick="selectSeat(14)"><img src="<?= APP_URL . '/public/img/seat.png' ?>" alt="seat" width="30px" height="30px"></button>
+                        </td>
+                        <td><button type="button" class="btn btn-secondary" onclick="selectSeat(15)"><img src="<?= APP_URL . '/public/img/seat.png' ?>" alt="seat" width="30px" height="30px"></button>
+                        </td>
+                        <td><button type="button" class="btn btn-secondary" onclick="selectSeat(16)"><img src="<?= APP_URL . '/public/img/seat.png' ?>" alt="seat" width="30px" height="30px"></button>
                         </td>
                     </tr>
                     <tr>
@@ -148,20 +183,53 @@ getNavbar(true);
                         <td>
                             <div class="emptySpace"></div>
                         </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><button type="button" class="btn btn-secondary" onclick="selectSeat(17)"><img src="<?= APP_URL . '/public/img/seat.png' ?>" alt="seat" width="30px" height="30px"></button>
+                        </td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td><button type="button" class="btn btn-secondary"><img src="<?= APP_URL . '/public/img/seat.png' ?>" alt="seat" width="30px" height="30px"></button>
+                        <td><button type="button" class="btn btn-secondary" onclick="selectSeat(18)"><img src="<?= APP_URL . '/public/img/seat.png' ?>" alt="seat" width="30px" height="30px"></button>
                         </td>
-                        <td> <button type="button" class="btn btn-secondary"><img src="<?= APP_URL . '/public/img/seat.png' ?>" alt="seat" width="30px" height="30px"></button>
+                        <td> <button type="button" class="btn btn-secondary" onclick="selectSeat(19)"><img src="<?= APP_URL . '/public/img/seat.png' ?>" alt="seat" width="30px" height="30px"></button>
+                        </td>
+                        <td><button type="button" class="btn btn-secondary" onclick="selectSeat(20)"><img src="<?= APP_URL . '/public/img/seat.png' ?>" alt="seat" width="30px" height="30px"></button>
+                        </td>
+                        <td><button type="button" class="btn btn-secondary" onclick="selectSeat(21)"><img src="<?= APP_URL . '/public/img/seat.png' ?>" alt="seat" width="30px" height="30px"></button>
+                        </td>
+                        <td><button type="button" class="btn btn-secondary" onclick="selectSeat(22)"><img src="<?= APP_URL . '/public/img/seat.png' ?>" alt="seat" width="30px" height="30px"></button>
+                        </td>
+                        <td><button type="button" class="btn btn-secondary" onclick="selectSeat(23)"><img src="<?= APP_URL . '/public/img/seat.png' ?>" alt="seat" width="30px" height="30px"></button>
+                        </td>
+                        <td><button type="button" class="btn btn-secondary" onclick="selectSeat(24)"><img src="<?= APP_URL . '/public/img/seat.png' ?>" alt="seat" width="30px" height="30px"></button>
+                        </td>
+                        <td><button type="button" class="btn btn-secondary" onclick="selectSeat(25)"><img src="<?= APP_URL . '/public/img/seat.png' ?>" alt="seat" width="30px" height="30px"></button>
                         </td>
                     </tr>
                     <tr>
                         <td><img src="<?= APP_URL . '/public/img/stir.png' ?>" alt="driver seat" width="30px" height="30px" style="margin-right: 20px;"></td>
-                        <td><button type="button" class="btn btn-secondary"><img src="<?= APP_URL . '/public/img/seat.png' ?>" alt="seat" width="30px" height="30px"></button>
+                        <td><button type="button" class="btn btn-secondary" onclick="selectSeat(26)"><img src="<?= APP_URL . '/public/img/seat.png' ?>" alt="seat" width="30px" height="30px"></button>
                         </td>
-                        <td><button type="button" class="btn btn-secondary"><img src="<?= APP_URL . '/public/img/seat.png' ?>" alt="seat" width="30px" height="30px"></button>
+                        <td><button type="button" class="btn btn-secondary" onclick="selectSeat(27)"><img src="<?= APP_URL . '/public/img/seat.png' ?>" alt="seat" width="30px" height="30px"></button>
                         </td>
+                        <td><button type="button" class="btn btn-secondary" onclick="selectSeat(28)"><img src="<?= APP_URL . '/public/img/seat.png' ?>" alt="seat" width="30px" height="30px"></button>
+                        </td>
+                        <td><button type="button" class="btn btn-secondary" onclick="selectSeat(29)"><img src="<?= APP_URL . '/public/img/seat.png' ?>" alt="seat" width="30px" height="30px"></button>
+                        </td>
+                        <td><button type="button" class="btn btn-secondary" onclick="selectSeat(30)"><img src="<?= APP_URL . '/public/img/seat.png' ?>" alt="seat" width="30px" height="30px"></button>
+                        </td>
+                        <td><button type="button" class="btn btn-secondary" onclick="selectSeat(31)"><img src="<?= APP_URL . '/public/img/seat.png' ?>" alt="seat" width="30px" height="30px"></button>
+                        </td>
+                        <td><button type="button" class="btn btn-secondary" onclick="selectSeat(32)"><img src="<?= APP_URL . '/public/img/seat.png' ?>" alt="seat" width="30px" height="30px"></button>
+                        </td>
+                        <td><button type="button" class="btn btn-secondary" onclick="selectSeat(33)"><img src="<?= APP_URL . '/public/img/seat.png' ?>" alt="seat" width="30px" height="30px"></button>
+                        </td>
+
                     </tr>
                 </table>
             </div>
@@ -177,18 +245,22 @@ getNavbar(true);
                         <button type="button" class="btn btn-danger" disabled><img src="<?= APP_URL . '/public/img/seat.png' ?>" alt="seat" width="30px" height="30px"></button>
                         <span class="cH3">Booked</span>
                     </div>
-                    <div class="col-sm">
+                    <!-- <div class="col-sm">
                         <button type="button" class="btn btn-success" disabled><img src="<?= APP_URL . '/public/img/seat.png' ?>" alt="seat" width="30px" height="30px"></button>
                         <span class="cH3">Selected</span>
-                    </div>
+                    </div> -->
                 </div>
                 <br>
                 <div class="boxBottom"></div>
-                <span class="cH3">Seat No: - 7</span>
+                <input type="hidden" name="selected-seat" id="selectSeatBox" />
+                <span class="cH3">Seat No: - <span id="setSeatText">-</span></span>
                 <br>
-                <span class="cH3">Bus Fare: GHS65 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Discount: 10%</span>
+                <input type="hidden" value="<?= $fee ?>" id="routeAmount">
+                <input type="hidden" value="<?= $discount ?>" id="routeDiscountInput">
+                <input type="hidden" id="routeTotalFare" name="total-fare">
+                <span class="cH3">Bus Fare: GHS<?= $fee ?> </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="cH3 invisible" id="routeDiscount"> Discount: <?= $discount ?>%</span>
                 <div class="boxBottom"></div>
-                <span class="cH2">Total Fare: GHS55</span>
+                <span class="cH2">Total Fare: GHS<span id="routeTotalFareDisplay"></span></span>
             </div>
         </div>
     </div>
@@ -201,14 +273,6 @@ getNavbar(true);
 
 
 <br><br><br>
-
-
-
-<?php
-getFooter(true);
-?>
-<script src="<?= APP_URL ?>/function/script.js"></script>
-
 <div class="modal fade" id="bookSummaryModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
@@ -222,21 +286,27 @@ getFooter(true);
                 <div class="row">
                     <div class="col-sm">
                         <div style="text-align: center;">
-                            <img src="./img/bus.png" alt="Bus" height="200px" width="300px">
+                            <img src="<?php
+                                        if (isset($busImage)) {
+                                            echo  APP_URL . "/uploads/" . $busImage;
+                                        } else {
+                                            echo  APP_URL . "/public/img/bus.png";
+                                        }
+                                        ?>" alt="Bus" height="200px" width="300px">
                         </div>
                     </div>
                     <div class="col-sm">
-                        <span class="cH2">ACCRA(CIRCLE) - BEREKUM (29/02/2020)</span>
+                        <span class="cH2"> <?= strtoupper($location) . " - " . strtoupper($destination) . " (" .  $departureDate . ")" ?></span>
                         <br>
-                        <span class="cH3">Trip type: One Way </span>
+                        <span class="cH3">Trip type: <span id="modelTripType">-</span> </span>
                         <br>
-                        <span class="cH3">Seat No: 7</span>
+                        <span class="cH3">Seat No: <span id="setSeatText2">-</span> </span>
                         <br>
-                        <span class="cH3">Bus fare: GHS55.00</span>
+                        <span class="cH3">Bus fare: GHS<?= $fee ?></span>
                         <br>
-                        <span class="cH3">Discount: 10%</span>
+                        <span class="cH3 invisible" id="routeDiscount2">Discount: <?= $discount ?>%</span>
                         <br>
-                        <span class="cH2">Total fare: GHS30.00</span>
+                        <span class="cH2">Total fare: GHS<span id="routeTotalFareDisplay2"></span></span>
                     </div>
                 </div>
                 <br><br>
@@ -247,24 +317,25 @@ getFooter(true);
                             <br><br>
                             <div class="dropdown">
                                 <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
-                                    Select Payment option
+                                    <span id="paymentView">Select Payment option</span>
                                 </button>
+                                <input type="hidden" id="paymentInput" name="payment">
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <button class="dropdown-item" type="button">MTN Mobile Money</button>
-                                    <button class="dropdown-item" type="button">AirtelTigo Money</button>
-                                    <button class="dropdown-item" type="button">Vodafone Cash</button>
-                                    <button class="dropdown-item" type="button">Visa Card</button>
+                                    <button class="dropdown-item" type="button" onclick="selectHomeSearch('paymentInput', 'paymentView', 'MTN Mobile Money')">MTN Mobile Money</button>
+                                    <button class="dropdown-item" type="button" onclick="selectHomeSearch('paymentInput', 'paymentView', 'AirtelTigo Money')">AirtelTigo Money</button>
+                                    <button class="dropdown-item" type="button" onclick="selectHomeSearch('paymentInput', 'paymentView', 'Vodafone Money')">Vodafone Cash</button>
+                                    <button class="dropdown-item" type="button" onclick="selectHomeSearch('paymentInput', 'paymentView', 'Visa Card')">Visa Card</button>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm ">
                             <div class="form-group">
                                 <label for="phoneNumber" class="cH2">Enter phone number</label>
-                                <input type="text" class="form-control" id="phoneNumber" placeholder="phone number">
+                                <input type="text" class="form-control" id="phoneNumber" placeholder="phone number" name="payment-phone">
                             </div>
                             <div class="form-group">
                                 <label for="transactionID" class="cH2">Enter transaction id</label>
-                                <input type="text" class="form-control" id="transactionID" placeholder="transaction id">
+                                <input type="text" class="form-control" id="transactionID" placeholder="transaction id" name="payment-transaction">
                             </div>
                         </div>
                     </div>
@@ -279,3 +350,9 @@ getFooter(true);
 
     </div>
 </div>
+
+
+<?php
+getFooter(true);
+?>
+<script src="<?= APP_URL ?>/function/script.js"></script>

@@ -27,4 +27,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET["trip_id"])) {
     $location = $tripDetail->current_location;
 
     $splitBusStop = explode(',', $busStop);
+
+    $sql = $conn->prepare("SELECT * FROM bus WHERE id = :id");
+    $sql->bindParam(":id", $busId);
+    $exe = $sql->execute();
+
+    if (!$exe) {
+        throw new LogicException("Error loading data...");
+    }
+
+    $busDetail = $sql->fetch(PDO::FETCH_OBJ);
+    $totalSeat = $busDetail->total_seat;
+    $busImage = $busDetail->image;
+    $model = $busDetail->model;
 }
