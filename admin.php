@@ -251,16 +251,23 @@ getNavbar(true);
                 <button type="button" class="btn btn-success btn-lg btn-block" onclick="openTapMyAccount('selectBusId', 'Select Bus')">Select Bus</button>
             </div>
             <div class="selectBus tabContent" id="selectBusId">
-                <div class="box">
+                <?php
+                foreach ($buses as &$bus) {
+                    echo
+                        '<div class="box">
                     <input type="hidden" name="bus-id">
                     <div class="row">
                         <div class="col boxBusPic">
-                            <img src="public/img/bus.png" alt="Bus">
+                            <img src="' .
+                            APP_URL . "/uploads/" . $bus["image"]
+                            . '" alt="Bus">
                         </div>
                         <div class="col-6 boxLeft boxRight">
                             <div class="boxBottom">
                                 <div class="boxText">
-                                    <span class="cH2">Bus Name</span>
+                                    <span class="cH2">' .
+                            $bus["model"]
+                            . '</span>
                                 </div>
                             </div>
                             <div class="container">
@@ -270,25 +277,18 @@ getNavbar(true);
                                             <img src="public/img/timimgs.png" alt="">
                                             <br>
                                             <span class="cH3">
-                                                Model <br> model
-                                            </span>
+                                                Number Plate <br> '.
+                                                $bus["number_plate"]
+                                            .'</span>
                                         </div>
                                     </div>
-                                    <div class="col-sm boxLeft boxRight">
+                                   
+                                    <div class="col-sm boxLeft">
                                         <div class="boxText">
-                                            <img src="public/img/estimatedTime.png" alt="">
-                                            <br>
                                             <span class="cH3">
-                                                No. Plate <br> 00334
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm">
-                                        <div class="boxText">
-                                            <img src="public/img/seats.png" alt="">
-                                            <br>
-                                            <span class="cH3">
-                                                Color <br> Red
+                                                <br>
+                                                Color <br> 
+                                                <div class="card" style="height: 40px; background-color: '. $bus["color"] .';"></div>
                                             </span>
                                         </div>
                                     </div>
@@ -300,14 +300,17 @@ getNavbar(true);
                                 <br>
                                 <div class="perPassengerText">Total Seats</div>
                                 <br>
-                                <span class="cH2">30</span>
+                                <span class="cH2">'. $bus["total_seat"] .'</span>
                                 <br>
                                 <button type="button" class="btn btn-success">Select Bus</button><br>
                             </div>
                         </div>
                     </div>
                 </div>
-                <br><br>
+                <br><br>';
+                }
+                unset($bus);
+                ?>
                 <button type="submit" class="btn btn-success btn-lg btn-block">Add Trip</button>
             </div>
         </form>

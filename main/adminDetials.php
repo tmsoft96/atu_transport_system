@@ -4,13 +4,25 @@ session_start();
 
 $msg = null;
 
-if (isset($_POST['submit-bus'])){
+if (!isset($_POST['submit_update'])) {
+    $sql = $conn->prepare("SELECT * FROM bus");
+    $exe = $sql->execute();
+
+    if (!$exe) {
+        throw new LogicException("Error loading bus...");
+    }
+
+    $buses = $sql->fetchAll();
+}
+
+
+if (isset($_POST['submit-bus'])) {
     $_SESSION['msg_update'] = null;
     $fileTmp = $_FILES['bus-pic']["tmp_name"];
     $fileName = $_FILES['bus-pic']["name"];
     $fileExt = explode(".", $fileName);
     $fileActualExt = strtolower(end($fileExt));
-    $fileActualName = time() . ".". $fileActualExt;
+    $fileActualName = time() . "." . $fileActualExt;
     move_uploaded_file($fileTmp, "../uploads/" . $fileActualName);
 
     try {
@@ -29,7 +41,7 @@ if (isset($_POST['submit-bus'])){
         $r_sql->bindParam(":image", $busPic);
         $reg_exe = $r_sql->execute();
 
-        if (!$reg_exe){
+        if (!$reg_exe) {
             throw new LogicException("Unable to register bus");
         }
 
