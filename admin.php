@@ -251,11 +251,11 @@ getNavbar(true);
                 <button type="button" class="btn btn-success btn-lg btn-block" onclick="openTapMyAccount('selectBusId', 'Select Bus')">Select Bus</button>
             </div>
             <div class="selectBus tabContent" id="selectBusId">
+                <input type="hidden" name="bus-id" id="busId">
                 <?php
                 foreach ($buses as &$bus) {
                     echo
                         '<div class="box">
-                    <input type="hidden" name="bus-id">
                     <div class="row">
                         <div class="col boxBusPic">
                             <img src="' .
@@ -277,9 +277,9 @@ getNavbar(true);
                                             <img src="public/img/timimgs.png" alt="">
                                             <br>
                                             <span class="cH3">
-                                                Number Plate <br> '.
-                                                $bus["number_plate"]
-                                            .'</span>
+                                                Number Plate <br> ' .
+                            $bus["number_plate"]
+                            . '</span>
                                         </div>
                                     </div>
                                    
@@ -288,7 +288,7 @@ getNavbar(true);
                                             <span class="cH3">
                                                 <br>
                                                 Color <br> 
-                                                <div class="card" style="height: 40px; background-color: '. $bus["color"] .';"></div>
+                                                <div class="card" style="height: 40px; background-color: ' . $bus["color"] . ';"></div>
                                             </span>
                                         </div>
                                     </div>
@@ -300,9 +300,9 @@ getNavbar(true);
                                 <br>
                                 <div class="perPassengerText">Total Seats</div>
                                 <br>
-                                <span class="cH2">'. $bus["total_seat"] .'</span>
+                                <span class="cH2">' . $bus["total_seat"] . '</span>
                                 <br>
-                                <button type="button" class="btn btn-success">Select Bus</button><br>
+                                <button type="button" class="btn btn-success" onclick="selectBusId('. $bus["id"] .')">Select Bus</button><br>
                             </div>
                         </div>
                     </div>

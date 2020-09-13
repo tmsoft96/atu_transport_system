@@ -14,3 +14,8 @@ function uploadProfilePicture(){
     let path = window.URL.createObjectURL(profilePictureInput.files[0])
     profilePic.src= path;
 }
+
+function selectBusId(id){
+    let busId = document.getElementById("busId");
+    busId.value = id;
+}
