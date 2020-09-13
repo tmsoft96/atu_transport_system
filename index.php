@@ -25,10 +25,19 @@ getNavbar(true);
     </div>
     <br>
     <div class="container">
+        <?php
+        if (isset($msg)) {
+            echo '<div class="alert alert-danger h5">
+                        <p>' . $msg . '</p>
+                        <span style="font-size: 13px"><i>Click on the routes to view all trips</i></span>
+                        </div>';
+        }
+        ?>
+       
         <div class="">
             <form method="GET">
                 <input type="hidden" id="homeCurrentText" name="location">
-                <input type="hidden" id="homeDestinationText" name="destionation">
+                <input type="hidden" id="homeDestinationText" name="destination">
                 <div class="btn-group homeTextBox">
                     <button type="button" class="btn btn-outline-dark dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
                         <img src="public/img/travel to.png" alt=""> <span id="homeCurrent">TRAVELING FROM</span>
@@ -36,7 +45,7 @@ getNavbar(true);
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
                         <?php
                         foreach ($routes as &$trip) {
-                            echo '<button class="dropdown-item" type="button" onclick="selectHomeSearch(\'homeCurrentText\', \'homeCurrent\', \''. $trip["current_location"]. '\')">' .
+                            echo '<button class="dropdown-item" type="button" onclick="selectHomeSearch(\'homeCurrentText\', \'homeCurrent\', \'' . $trip["current_location"] . '\')">' .
                                 $trip["current_location"]
                                 . '</button>';
                         }
@@ -51,15 +60,15 @@ getNavbar(true);
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
                         <?php
                         foreach ($routes as &$trip) {
-                            echo '<button class="dropdown-item" type="button"  onclick="selectHomeSearch(\'homeDestinationText\', \'homeDestination\', \''. $trip["final_destinantion"]. '\')">' .
-                                $trip["final_destinantion"]
+                            echo '<button class="dropdown-item" type="button"  onclick="selectHomeSearch(\'homeDestinationText\', \'homeDestination\', \'' . $trip["bus_stops"] . '\')">' .
+                                $trip["bus_stops"]
                                 . '</button>';
                         }
                         ?>
                     </div>
                 </div>
                 <div class="btn-group homeTextBox">
-                    <input type="date" name="date" placeholder="TRAVELING DATE" class="btn btn-outline-dark" style="height: 52px;"/>
+                    <input type="date" name="date" placeholder="TRAVELING DATE" class="btn btn-outline-dark" style="height: 52px;" />
                 </div>
 
                 <div class="btn-group homeTextBox">
