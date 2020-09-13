@@ -1,64 +1,75 @@
 <?php
-session_start();
 include __DIR__ . "/base_url.php";
 include __DIR__ . "/controller/RouteController.php";
 // include __DIR__ . "/controller/AuthController.php";
 // checkUserIsLoggedIn();
+include __DIR__ . "/main/homeDetials.php";
+
 $pageName = "homepage";
 $_SESSION['active'] = 'homepage';
 $_SESSION['msg_update'] = null;
-
 
 getHead(true, $pageName);
 getNavbar(true);
 ?>
 <style>
     #divcolor {
-    /* background-image: url('../public/img/VIP-Bus.png'); */
-    border-color: red;
+        /* background-image: url('../public/img/VIP-Bus.png'); */
+        border-color: red;
 
-}
+    }
 </style>
 <div class="container-fluid">
     <div class=" d-flex justify-content-center h2 mt-3 mb-3">
-      <span> Online Bus Ticketing System </span>
+        <span> Online Bus Ticketing System </span>
     </div>
+    <br>
     <div class="container">
         <div class="">
-            <form>
+            <form method="GET">
+                <input type="hidden" id="homeCurrentText" name="location">
+                <input type="hidden" id="homeDestinationText" name="destionation">
                 <div class="btn-group homeTextBox">
                     <button type="button" class="btn btn-outline-dark dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
-                        <img src="public/img/travel to.png" alt=""> TRAVELING FROM
+                        <img src="public/img/travel to.png" alt=""> <span id="homeCurrent">TRAVELING FROM</span>
                     </button>
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
-                        <button class="dropdown-item" type="button">Action</button>
-                        <button class="dropdown-item" type="button">Another action</button>
-                        <button class="dropdown-item" type="button">Something else here</button>
+                        <?php
+                        foreach ($routes as &$trip) {
+                            echo '<button class="dropdown-item" type="button" onclick="selectHomeSearch(\'homeCurrentText\', \'homeCurrent\', \''. $trip["current_location"]. '\')">' .
+                                $trip["current_location"]
+                                . '</button>';
+                        }
+                        ?>
                     </div>
                 </div>
-        
+
                 <div class="btn-group homeTextBox">
                     <button type="button" class="btn btn-outline-dark dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
-                        <img src="public/img/travel from.png" alt=""> TRAVELING TO
+                        <img src="public/img/travel from.png" alt=""> <span id="homeDestination">TRAVELING TO</span>
                     </button>
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
-                        <button class="dropdown-item" type="button">Action</button>
-                        <button class="dropdown-item" type="button">Another action</button>
-                        <button class="dropdown-item" type="button">Something else here</button>
+                        <?php
+                        foreach ($routes as &$trip) {
+                            echo '<button class="dropdown-item" type="button"  onclick="selectHomeSearch(\'homeDestinationText\', \'homeDestination\', \''. $trip["final_destinantion"]. '\')">' .
+                                $trip["final_destinantion"]
+                                . '</button>';
+                        }
+                        ?>
                     </div>
                 </div>
                 <div class="btn-group homeTextBox">
-                    <button type="button" class="btn btn-outline-dark" data-display="static" aria-haspopup="true" aria-expanded="false">
-                        <img src="public/img/travel date.png" alt=""> TRAVELING DATE
-                    </button>
+                    <input type="date" name="date" placeholder="TRAVELING DATE" class="btn btn-outline-dark" style="height: 52px;"/>
                 </div>
-        
+
                 <div class="btn-group homeTextBox">
-                    <button type="button" class="btn btn-success btn-lg cButton" onclick="javascript: window.location.href = 'routeDetails.php'">Search</button>
+                    <button type="submit" name="submit-home-search" class="btn btn-success btn-lg cButton">Search</button>
+                    <!-- onclick="javascript: window.location.href = 'routeDetails.php'" -->
                 </div>
             </form>
         </div>
-    
+        <br><br>
+
         <div>
             <img src="public/img/VIP-Bus.png" alt="buses" class="img-fluid" width="100%;">
         </div>
@@ -87,3 +98,4 @@ getNavbar(true);
 <?php
 getFooter(true);
 ?>
+<script src="<?= APP_URL ?>/function/script.js"></script>

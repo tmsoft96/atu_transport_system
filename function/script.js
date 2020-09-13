@@ -21,3 +21,10 @@ function selectBusId(id, name, numPlate){
     busId.value = id;
     busDisplay.innerHTML = "Bus selected (model: " + name + ", number plate: " + numPlate + ")";
 }
+
+function selectHomeSearch(id1, id2, text){
+    let first = document.getElementById(id1);
+    let second = document.getElementById(id2);
+    first.value = text;
+    second.innerHTML = text;
+}
