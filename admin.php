@@ -1,8 +1,8 @@
 <?php
-session_start();
 include __DIR__ . "/base_url.php";
 include __DIR__ . "/controller/RouteController.php";
 include __DIR__ . "/controller/AuthController.php";
+include __DIR__ . "/main/adminDetials.php";
 
 checkUserIsLoggedIn();
 $_SESSION['active'] = null;
@@ -54,6 +54,18 @@ getNavbar(true);
     <div class="accountRightContainer">
         <span class="cH1" id="title">Schedules</span>
         <br> <br>
+        <?php
+        if (isset($msg)) {
+            echo '<div class="alert alert-danger h5">
+                        <p>' . $msg . '</p>
+                        </div>';
+        }
+        if (isset($_SESSION['msg_update'])) {
+            echo '<div class="alert alert-info h5">
+                        <p>' . $_SESSION['msg_update'] . '</p>
+                        </div>';
+        }
+        ?>
         <div class="schedules tabContent" id="schedulesId">
             <div class="box">
                 <div class="row">
@@ -302,7 +314,7 @@ getNavbar(true);
 
 
         <div class="addBus formSize tabContent" id="addBusId">
-            <form method="POST">
+            <form class="mt-3" method="POST" enctype="multipart/form-data" action="main/adminDetials.php">
                 <div style="text-align: center;">
                     <img src="public/img/bus.png" alt="Bus" height="150px" width="220px" id="profilePic">
                     <br>
@@ -337,7 +349,7 @@ getNavbar(true);
                     </div>
                 </div>
                 <br><br>
-                <button type="submit" class="btn btn-success btn-lg btn-block">Add Bus</button>
+                <button type="submit" class="btn btn-success btn-lg btn-block" name="submit-bus">Add Bus</button>
             </form>
         </div>
 

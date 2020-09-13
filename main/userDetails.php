@@ -30,6 +30,7 @@ if (isset($_SESSION['logged']) && !isset($_POST['submit-update'])) {
 $msg = null;
 
 if (isset($_POST['submit-update'])) {
+    $_SESSION['msg_update'] = null;
     $id = $_POST['user-id'];
     $name = $_POST['name'];
     $phone = $_POST['phone'];
