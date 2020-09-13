@@ -55,3 +55,54 @@ if (isset($_POST['submit-bus'])) {
         $msg = $ex->getMessage();
     }
 }
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit-trip"])) {
+    $_SESSION['msg_update'] = null;
+    $day = $_POST["day"];
+    $location = $_POST["location"];
+    $destination = $_POST["destination"];
+    $busStops = $_POST["bus-stops"];
+    $departure_time = $_POST["departure-time"];
+    $departure_date = $_POST["departure-date"];
+    $arrival_time = $_POST["arrival-time"];
+    $arrival_date = $_POST["arrival-date"];
+    $amount = $_POST["amount"];
+    $discount = $_POST["discount"];
+    $busId = $_POST["bus-id"];
+
+    if ($busId == null || $busId == "") {
+        $msg = "Bus not selected";
+        return;
+    }
+
+    try {
+        //add trip to database
+        $r_sql = $conn->prepare("INSERT INTO route (final_destinantion, bus_stops, fee, departure_time, departure_date, arrival_time, arrival_date, discount, bus_id, current_location, operation_day) 
+    VALUES (:destinantion, :busStops, :fee, :departureTime, :departureDate, :arrivalTime, :arrivalDate, :discount, :busId, :location, :day)");
+        $r_sql->bindParam(":destinantion", $destination);
+        $r_sql->bindParam(":busStops", $busStops);
+        $r_sql->bindParam(":fee", $amount);
+        $r_sql->bindParam(":departureTime", $departure_time);
+        $r_sql->bindParam(":departureDate", $departure_date);
+        $r_sql->bindParam(":arrivalTime", $arrival_time);
+        $r_sql->bindParam(":arrivalDate", $arrival_date);
+        $r_sql->bindParam(":discount", $discount);
+        $r_sql->bindParam(":busId", $busId);
+        $r_sql->bindParam(":location", $location);
+        $r_sql->bindParam(":day", $day);
+        $reg_exe = $r_sql->execute();
+
+        if (!$reg_exe) {
+            throw new LogicException("Unable to register bus");
+        }
+
+        $_SESSION['msg_update'] = "Trip added successfully";
+
+        //redirecting
+        header("location: admin.php");
+    } catch (LogicException $th) {
+        $msg = $th->getMessage();
+    } catch (Exception $ex) {
+        $msg = $ex->getMessage();
+    }
+}

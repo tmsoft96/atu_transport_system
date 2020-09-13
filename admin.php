@@ -302,7 +302,7 @@ getNavbar(true);
                                 <br>
                                 <span class="cH2">' . $bus["total_seat"] . '</span>
                                 <br>
-                                <button type="button" class="btn btn-success" onclick="selectBusId('. $bus["id"] .')">Select Bus</button><br>
+                                <button type="button" class="btn btn-success" onclick="selectBusId(\'' . $bus["id"] . '\',\'' . $bus["model"] . '\',\'' . $bus["number_plate"] . '\')">Select Bus</button><br>
                             </div>
                         </div>
                     </div>
@@ -311,7 +311,12 @@ getNavbar(true);
                 }
                 unset($bus);
                 ?>
-                <button type="submit" class="btn btn-success btn-lg btn-block">Add Trip</button>
+                <div class="d-flex justify-content-center">
+                    <span class="h5"><span id="busSelectDisplay">Select bus</span> </span>
+                </div>
+
+                <br><br>
+                <button type="submit" name="submit-trip" class="btn btn-success btn-lg btn-block">Add Trip</button>
             </div>
         </form>
 

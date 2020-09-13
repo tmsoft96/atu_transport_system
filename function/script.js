@@ -15,7 +15,9 @@ function uploadProfilePicture(){
     profilePic.src= path;
 }
 
-function selectBusId(id){
+function selectBusId(id, name, numPlate){
     let busId = document.getElementById("busId");
+    let busDisplay = document.getElementById("busSelectDisplay");
     busId.value = id;
+    busDisplay.innerHTML = "Bus selected (model: " + name + ", number plate: " + numPlate + ")";
 }
