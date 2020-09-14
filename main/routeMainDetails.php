@@ -4,6 +4,7 @@ session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET["trip_id"])) {
     $tripId = $_GET["trip_id"];
+    $_SESSION["tripId"] = $tripId;
 
     $sql = $conn->prepare("SELECT * FROM route WHERE id = :id");
     $sql->bindParam(":id", $tripId);
@@ -40,4 +41,43 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET["trip_id"])) {
     $totalSeat = $busDetail->total_seat;
     $busImage = $busDetail->image;
     $model = $busDetail->model;
+}
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["book-submit"])) {
+    $_SESSION['msg_update'] = null;
+    $userId = $_SESSION["userId"];
+    $routeId = $_SESSION["tripId"];
+    $tripType = $_POST["details-trip-type"];
+    $tripBusStop = $_POST["details-bus-stop"];
+    $pAmount = $_POST["total-fare"];
+    $pPhone = $_POST["payment-phone"];
+    $pPlatform = $_POST["payment"];
+    $pTransId = $_POST["payment-transaction"];
+    try {
+        $r_sql = $conn->prepare("INSERT INTO schedules (user_id, route_id, trip_type, trip_bus_stop, p_amount, p_phone_number, p_platform, p_trans_id) 
+    VALUES (:user_id, :route_id, :trip_type, :trip_bus_stop, :p_amount, :p_phone_number, :p_platform, :p_trans_id)");
+        $r_sql->bindParam(":user_id", $userId);
+        $r_sql->bindParam(":route_id", $routeId);
+        $r_sql->bindParam(":trip_type", $tripType);
+        $r_sql->bindParam(":trip_bus_stop", $tripBusStop);
+        $r_sql->bindParam(":p_amount", $pAmount);
+        $r_sql->bindParam(":p_phone_number", $pPhone);
+        $r_sql->bindParam(":p_platform", $pPlatform);
+        $r_sql->bindParam(":p_trans_id", $pTransId);
+
+        $reg_exe = $r_sql->execute();
+
+        if (!$reg_exe) {
+            throw new LogicException("Unable to register bus");
+        }
+
+        $_SESSION['msg_update'] = "Bus added successfully";
+
+        //redirecting
+        header("location: index.php");
+    } catch (LogicException $th) {
+        $msg = $th->getMessage();
+    } catch (Exception $t) {
+        $msg = $t->getMessage();
+    }
 }
