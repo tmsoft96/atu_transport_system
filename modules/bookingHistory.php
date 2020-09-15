@@ -12,6 +12,7 @@ getHead(false, $pageName);
 
 getNavbar(false);
 ?>
+<div class="container">
     <div class="container-fluid">
 
         <div class="row">
@@ -29,7 +30,7 @@ getNavbar(false);
         <div class="box">
             <div class="row">
                 <div class="col boxBusPic">
-                    <img src="<?= APP_URL?>/public/img/bus.png" alt="Bus">
+                    <img src="<?= APP_URL ?>/public/img/bus.png" alt="Bus">
                 </div>
                 <div class="col-6 boxLeft boxRight">
                     <div class="boxBottom">
@@ -78,8 +79,9 @@ getNavbar(false);
                 </div>
             </div>
         </div>
-    
+
     </div>
+</div>
 <?php
 getFooter(false);
 ?>
