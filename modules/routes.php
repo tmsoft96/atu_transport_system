@@ -1,9 +1,10 @@
 <?php
-session_start();
 include __DIR__ . "/../base_url.php";
 include __DIR__ . "/../controller/RouteController.php";
-include __DIR__ . "/../controller/AuthController.php";
-checkUserIsLoggedIn();
+include __DIR__ . "/../main/routeDetails.php";
+// include __DIR__ . "/../controller/AuthController.php";
+// checkUserIsLoggedIn();
+
 $pageName = "Bus Routes";
 $_SESSION['active'] = 'routes';
 $_SESSION['msg_update'] = null;
@@ -22,15 +23,19 @@ getNavbar(false);
                 <div class="col">
                     <span class="cH2">Select your location</span>
                     <br><br>
+                    <input type="hidden" id="homeCurrentText" name="location">
                     <div class="dropdown">
                         <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
-                            -Choose Location-
+                            <span id="homeCurrent"> -Choose Location-</span>
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <button class="dropdown-item" type="button">MTN Mobile Money</button>
-                            <button class="dropdown-item" type="button">AirtelTigo Money</button>
-                            <button class="dropdown-item" type="button">Vodafone Cash</button>
-                            <button class="dropdown-item" type="button">Visa Card</button>
+                            <?php
+                            foreach ($routes as &$trip) {
+                                echo '<button class="dropdown-item" type="button" onclick="selectHomeSearch(\'homeCurrentText\', \'homeCurrent\', \'' . $trip["current_location"] . '\')">' .
+                                    $trip["current_location"]
+                                    . '</button>';
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -38,7 +43,33 @@ getNavbar(false);
                     <div class="routeTable">
                         <table>
                             <tr>
-                                <td>
+                                <?php
+                                $monday = false;
+                                $tuesday = false;
+                                $wednesday = false;
+                                $thurday = false;
+                                $friday = false;
+                                $saturday = false;
+                                $sunday = false;
+                                foreach ($routes as &$trip) {
+                                    $operationDay = $trip["operation_day"];
+                                    if (strtolower($operationDay) == "sunday") {
+                                        $sunday = true;
+                                    } else  if (strtolower($operationDay) == "monday") {
+                                        $monday = true;
+                                    } else  if (strtolower($operationDay) == "tuesday") {
+                                        $tuesday = true;
+                                    } else  if (strtolower($operationDay) == "wednesday") {
+                                        $wednesday = true;
+                                    } else  if (strtolower($operationDay) == "thursday") {
+                                        $thurday = true;
+                                    } else  if (strtolower($operationDay) == "friday") {
+                                        $friday = true;
+                                    } else  if (strtolower($operationDay) == "saturday") {
+                                        $saturday = true;
+                                    }
+                                }
+                                if ($sunday) echo ' <td>
                                     <div class="routeDateText">
                                         <input class="form-check-input" type="radio" name="routeDay" id="routeDay1" value="option1" checked>
                                         <br><br>
@@ -46,49 +77,50 @@ getNavbar(false);
                                             Sunday
                                         </label>
                                     </div>
-                                </td>
-                                <td>
+                                </td>';
+                                if ($monday) echo '<td>
                                     <input class="form-check-input" type="radio" name="routeDay" id="routeDay1" value="option1">
                                     <br><br>
                                     <label class="form-check-label" for="routeDay1">
                                         Monday
                                     </label>
-                                </td>
-                                <td>
+                                </td>';
+                                if ($tuesday) echo '<td>
                                     <input class="form-check-input" type="radio" name="routeDay" id="routeDay1" value="option1">
                                     <br><br>
                                     <label class="form-check-label" for="routeDay1">
                                         Tuesday
                                     </label>
-                                </td>
-                                <td>
+                                </td>';
+                                if ($wednesday) echo '<td>
                                     <input class="form-check-input" type="radio" name="routeDay" id="routeDay1" value="option1">
                                     <br><br>
                                     <label class="form-check-label" for="routeDay1">
                                         Wednesday
                                     </label>
-                                </td>
-                                <td>
+                                </td>';
+                                if ($thurday) echo '<td>
                                     <input class="form-check-input" type="radio" name="routeDay" id="routeDay1" value="option1">
                                     <br><br>
                                     <label class="form-check-label" for="routeDay1">
                                         Thursday
                                     </label>
-                                </td>
-                                <td>
+                                </td>';
+                                if ($friday) echo '<td>
                                     <input class="form-check-input" type="radio" name="routeDay" id="routeDay1" value="option1">
                                     <br><br>
                                     <label class="form-check-label" for="routeDay1">
                                         Friday
                                     </label>
-                                </td>
-                                <td>
+                                </td>';
+                                if ($saturday) echo '<td>
                                     <input class="form-check-input" type="radio" name="routeDay" id="routeDay1" value="option1">
                                     <br><br>
                                     <label class="form-check-label" for="routeDay1">
                                         Saturday
                                     </label>
-                                </td>
+                                </td>';
+                                ?>
                             </tr>
                         </table>
                     </div>
@@ -108,27 +140,29 @@ getNavbar(false);
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>HO-ACCRA (TUDU)</td>
-                <td>3:30AM</td>
-                <td>29.00</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>HO-ACCRA (TUDU)</td>
-                <td>3:30AM</td>
-                <td>29.00</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>HO-ACCRA (TUDU)</td>
-                <td>3:30AM</td>
-                <td>29.00</td>
-            </tr>
+            <?php
+            $num = 0;
+            foreach ($routes as &$trip) {
+                $num++;
+                echo '
+                        <tr onclick="routeLocation('. $trip["id"] .')">
+                            <th scope="row">' . $num . '</th>
+                            <td>' . strtoupper($trip["current_location"]) . " - " . strtoupper($trip["final_destinantion"]) . "(" . strtoupper($trip["bus_stops"]) . ")" . '</td>
+                            <td>' . $trip["departure_time"] . '</td>
+                            <td>' . $trip["arrival_time"] . '</td>
+                        </tr>
+                    ';
+            }
+            ?>
         </tbody>
     </table>
 </div>
 <?php
 getFooter(false);
 ?>
+<script src="<?= APP_URL ?>/function/script.js"></script>
+<script>
+    function routeLocation(id){
+        window.location.href =  '/busticket/routeDetails.php?trip_id=' + id;
+    }
+</script>
