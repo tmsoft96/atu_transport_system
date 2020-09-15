@@ -4,7 +4,8 @@ session_start();
 
 $msg = null;
 
-if (!isset($_POST['submit_update'])) {
+if (!isset($_POST['submit-bus']) ) {
+    $_SESSION['msg_update'] = null;
     $sql = $conn->prepare("SELECT * FROM bus");
     $exe = $sql->execute();
 
@@ -13,6 +14,19 @@ if (!isset($_POST['submit_update'])) {
     }
 
     $buses = $sql->fetchAll();
+
+    $sql1 = $conn->prepare(("SELECT * FROM schedules"));
+    $exe1 = $sql1->execute();
+
+    if (!$exe1) {
+        throw new LogicException("Error loading schedules...");
+    }
+
+    $schedules = $sql1->fetchAll();
+
+    if ($schedules == null){
+        $_SESSION['msg_update'] = "No schedules yet...";
+    }
 }
 
 

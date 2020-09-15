@@ -32,6 +32,11 @@ getNavbar(true);
                         <span style="font-size: 13px"><i>Click on the routes to view all trips</i></span>
                         </div>';
         }
+        if (isset($_SESSION['msg_update'])) {
+            echo '<div class="alert alert-info h5">
+                        <p>' . $_SESSION['msg_update'] . '</p>
+                        </div>';
+        }
         ?>
        
         <div class="">

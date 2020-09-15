@@ -66,119 +66,7 @@ getNavbar(true);
                         </div>';
         }
         ?>
-        <div class="schedules tabContent" id="schedulesId">
-            <div class="box">
-                <div class="row">
-                    <div class="col boxBusPic">
-                        <img src="public/img/bus.png" alt="Bus">
-                    </div>
-                    <div class="col-6 boxLeft boxRight">
-                        <div class="boxBottom">
-                            <div class="boxText">
-                                <span class="cH2">ACCRA(CIRCLE) - BEREKUM</span>
-                            </div>
-                        </div>
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-sm">
-                                    <div class="boxText">
-                                        <img src="public/img/timimgs.png" alt="">
-                                        <br>
-                                        <span class="cH3">
-                                            Timings <br> 9: 00 PM 5:45AM
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="col-sm boxLeft boxRight">
-                                    <div class="boxText">
-                                        <img src="public/img/estimatedTime.png" alt="">
-                                        <br>
-                                        <span class="cH3">
-                                            Estimated Time <br> 5:45 Hrs
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="col-sm">
-                                    <div class="boxText">
-                                        <img src="public/img/seats.png" alt="">
-                                        <br>
-                                        <span class="cH3">
-                                            Seats <br> 44 Available
-                                        </span>
 
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div style="padding-left: 50px;"><br><br>
-                            <div class="perPassengerText">Amount paid</div>
-                            <br>
-                            <span class="cH2">GHS65</span>
-                            <br>
-                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#bookSummaryModal">View Details</button><br>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="box">
-                <div class="row">
-                    <div class="col boxBusPic">
-                        <img src="public/img/bus.png" alt="Bus">
-                    </div>
-                    <div class="col-6 boxLeft boxRight">
-                        <div class="boxBottom">
-                            <div class="boxText">
-                                <span class="cH2">ACCRA(CIRCLE) - BEREKUM</span>
-                            </div>
-                        </div>
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-sm">
-                                    <div class="boxText">
-                                        <img src="public/img/timimgs.png" alt="">
-                                        <br>
-                                        <span class="cH3">
-                                            Timings <br> 9: 00 PM 5:45AM
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="col-sm boxLeft boxRight">
-                                    <div class="boxText">
-                                        <img src="public/img/estimatedTime.png" alt="">
-                                        <br>
-                                        <span class="cH3">
-                                            Estimated Time <br> 5:45 Hrs
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="col-sm">
-                                    <div class="boxText">
-                                        <img src="public/img/seats.png" alt="">
-                                        <br>
-                                        <span class="cH3">
-                                            Seats <br> 44 Available
-                                        </span>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div style="padding-left: 50px;"><br><br>
-                            <div class="perPassengerText">Amount paid</div>
-                            <br>
-                            <span class="cH2">GHS65</span>
-                            <br>
-                            <button type="button" class="btn btn-success">View Details</button><br>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <form method="POST">
             <div class="addTrip formSize tabContent" id="addTripId">
                 <div class="row">
@@ -361,7 +249,222 @@ getNavbar(true);
             </form>
         </div>
 
+        <div class="schedules tabContent" id="schedulesId">
+            <?php
+            foreach ($schedules as &$schedule) {
+                $routeId = $schedule['route_id'];
+                $sql2 = $conn->prepare("SELECT * FROM route WHERE id = :id");
+                $sql2->bindParam(":id", $routeId);
+                $exe1 = $sql2->execute();
+
+                if (!$exe1) {
+                    throw new LogicException("Error loading data...");
+                }
+
+                $tripDetail = $sql2->fetch(PDO::FETCH_OBJ);
+                $fee = $tripDetail->fee;
+                $destination = $tripDetail->final_destinantion;
+                $departureTime = $tripDetail->departure_time;
+                $departureDate = $tripDetail->departure_date;
+                $arrivalTime = $tripDetail->arrival_time;
+                $arrivalDate = $tripDetail->arrival_date;
+                $busId = $tripDetail->bus_id;
+                $location = $tripDetail->current_location;
+                $discount = $tripDetail->discount;
+
+                $sql3 = $conn->prepare("SELECT * FROM bus WHERE id = :id");
+                $sql3->bindParam(":id", $busId);
+                $exe2 = $sql3->execute();
+
+                if (!$exe2) {
+                    throw new LogicException("Error loading data...");
+                }
+
+                $busDetail = $sql3->fetch(PDO::FETCH_OBJ);
+                $totalSeatv = $busDetail->total_seat;
+                $busImagev = $busDetail->image;
+                $modelv = $busDetail->model;
+
+                $email = $_SESSION['email'];
+                $sql4 = $conn->prepare("SELECT * FROM users WHERE email = :email");
+                $sql4->bindParam(":email", $email);
+                $exe3 = $sql4->execute();
+
+                if (!$exe3) {
+                    throw new LogicException("Error loading data...");
+                }
+
+                $user = $sql4->fetch(PDO::FETCH_OBJ);
+
+                $userId = $user->id;
+                $profileImage = $user->image;
+                $name = $user->name;
+                $phone = $user->phone;
+                $email = $user->email;
+                $address = $user->address;
+                $kinName = $user->kin_name;
+                $kinEmail = $user->kin_email;
+                $kinPhone = $user->kin_phone;
+
+                echo '<div class="box">
+                <div class="row">
+                    <div class="col boxBusPic">
+                        <img src="' .
+                    APP_URL . "/uploads/" . $busImagev
+                    . '" alt="Bus">
+                    </div>
+                    <div class="col-6 boxLeft boxRight">
+                        <div class="boxBottom">
+                            <div class="boxText h4">' .
+                    strtoupper($location) . " - " . strtoupper($destination) . " (" .  $departureDate . ")"
+                    . '</div>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <div class="boxText">
+                                        <img src="public/img/timimgs.png" alt="">
+                                        <br>
+                                        <span class="cH3">
+                                            Timings <br> ' .
+                    $departureTime . " - " . $arrivalTime
+                    . '
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-sm boxLeft">
+                                    <div class="boxText">
+                                        <br>
+                                        <span class="cH3">
+                                            Seats <br>' .
+                    $totalSeatv
+                    . ' Available
+                                        </span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div style="padding-left: 50px;"><br><br>
+                            <div class="perPassengerText">Amount paid</div>
+                            
+                            <span class="cH2">GHS' .
+                    $schedule['p_amount']
+                    . '</span>
+                            <br><br>
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#bookSummaryModal' . $routeId . '">View Details</button><br>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modal fade" id="bookSummaryModal' . $routeId . '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Booking Details</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <div style="text-align: center;">
+                                        <img src="' .
+                    APP_URL . "/uploads/" . $profileImage
+                    . '" alt="Bus" height="150px" width="150px" class="rounded-circle">
+                                        </div>
+                                        <br><br>
+                                        <span class="cH3">Name: ' .
+                    $name
+                    . '</span>
+                                        <br>
+                                        <span class="cH3">Phone Number: ' .
+                    $phone
+                    . '</span>
+                                        <br>
+                                        <span class="cH3">Email: ' .
+                    $email
+                    . '</span>
+                                        <br>
+                                        <span class="cH3">Address: ' .
+                    $address
+                    . '</span>
+                                        <br><br>
+                                        <span class="cH2">Kin Details</span>
+                                        <br>
+                                        <span class="cH3">Name: ' .
+                    $kinName
+                    . '</span>
+                                        <br>
+                                        <span class="cH3">Phone Number: ' .
+                    $kinPhone
+                    . '</span>
+                                        <br>
+                                        <span class="cH3">Email: ' .
+                    $kinEmail
+                    . '</span>
+                                        <br>
+                                    </div>
+                                    <div class="col-sm">
+                                        <span class="cH2">' .
+                    strtoupper($location) . " - " . strtoupper($destination) . " (" .  $departureDate . ")"
+                    . '</span>
+                                        <br>
+                                        <span class="cH3">Trip type: ' .
+                    $schedule['trip_type']
+                    . ' </span>
+                                        <br>
+                                        <span class="cH3">Seat No: ' .
+                    $schedule['seat_no']
+                    . '</span>
+                                        <br>
+                                        <span class="cH3">Bus fare: GHS' .
+                    $fee
+                    . '</span>
+                                        <br>
+                                        <span class="cH3">Discount: ' .
+                    $discount
+                    . '%</span>
+                                        <br>
+                                        <span class="cH2">Total fare: GHS' .
+                    $schedule['p_amount']
+                    . '</span>
+                                        <br><br>
+                                        <span class="cH2">Payment Option</span>
+                                        <br>
+                                        <span class="cH3">Amount Paid: ' .
+                    $schedule['p_amount']
+                    . '</span>
+                                        <br>
+                                        <span class="cH3">Transaction Id: ' .
+                    $schedule['p_trans_id']
+                    . '</span>
+                                        <br>
+                                        <span class="cH3">Platform: ' .
+                    $schedule['p_platform']
+                    . '</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary cButton" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                ';
+            }
+            ?>
+        </div>
     </div>
+
+
+
+
 </div>
 <?php
 getFooter(true);
@@ -372,66 +475,3 @@ getFooter(true);
         openTapMyAccount('schedulesId', 'Schedules');
     });
 </script>
-
-<div class="modal fade" id="bookSummaryModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Booking Details</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-sm">
-                        <div style="text-align: center;">
-                            <img src="public/img/bus.png" alt="Bus" height="200px" width="300px">
-                        </div>
-                        <br><br>
-                        <span class="cH3">Name:</span>
-                        <br>
-                        <span class="cH3">Phone Number:</span>
-                        <br>
-                        <span class="cH3">Email:</span>
-                        <br>
-                        <span class="cH3">Address:</span>
-                        <br><br>
-                        <span class="cH2">Kin Details</span>
-                        <br>
-                        <span class="cH3">Name:</span>
-                        <br>
-                        <span class="cH3">Phone Number:</span>
-                        <br>
-                        <span class="cH3">Email:</span>
-                        <br>
-                    </div>
-                    <div class="col-sm">
-                        <span class="cH2">ACCRA(CIRCLE) - BEREKUM (29/02/2020)</span>
-                        <br>
-                        <span class="cH3">Trip type: One Way </span>
-                        <br>
-                        <span class="cH3">Seat No: 7</span>
-                        <br>
-                        <span class="cH3">Bus fare: GHS55.00</span>
-                        <br>
-                        <span class="cH3">Discount: 10%</span>
-                        <br>
-                        <span class="cH2">Total fare: GHS30.00</span>
-                        <br><br>
-                        <span class="cH2">Payment Option</span>
-                        <br>
-                        <span class="cH3">Amount Paid:</span>
-                        <br>
-                        <span class="cH3">Transaction Id:</span>
-                        <br>
-                        <span class="cH3">Platform:</span>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary cButton" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>

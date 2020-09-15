@@ -70,6 +70,7 @@ try {
         id INT(255) PRIMARY KEY AUTO_INCREMENT,
         user_id INT(11),
         route_id INT(11),
+        seat_no INT(11),
         trip_type VARCHAR(100) NOT NULL,
         trip_bus_stop VARCHAR(100) NOT NULL,
         p_amount VARCHAR(100) NOT NULL,
