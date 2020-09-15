@@ -336,10 +336,9 @@ getNavbar(true);
                                     <div class="boxText">
                                         <br>
                                         <span class="cH3">
-                                            Seats <br>' .
-                    $totalSeatv
-                    . ' Available
-                                        </span>
+                                        Selected Seat <br>' .
+                    $schedule['seat_no']
+                    . ' </span>
 
                                     </div>
                                 </div>

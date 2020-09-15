@@ -1,8 +1,8 @@
 <?php
-session_start();
 include __DIR__ . "/../base_url.php";
 include __DIR__ . "/../controller/RouteController.php";
 include __DIR__ . "/../controller/AuthController.php";
+include __DIR__ . "/../main/bookingHistoryDetails.php";
 checkUserIsLoggedIn();
 $pageName = "booking history";
 $_SESSION['active'] = 'booking';
@@ -27,59 +27,88 @@ getNavbar(false);
             </div>
         </div>
         <br><br>
-        <div class="box">
+
+        <?php
+        foreach ($schedules as &$schedule) {
+            $routeId = $schedule['route_id'];
+            $sql2 = $conn->prepare("SELECT * FROM route WHERE id = :id");
+            $sql2->bindParam(":id", $routeId);
+            $exe1 = $sql2->execute();
+
+            if (!$exe1) {
+                throw new LogicException("Error loading data...");
+            }
+
+            $tripDetail = $sql2->fetch(PDO::FETCH_OBJ);
+            $destination = $tripDetail->final_destinantion;
+            $departureTime = $tripDetail->departure_time;
+            $departureDate = $tripDetail->departure_date;
+            $arrivalTime = $tripDetail->arrival_time;
+            $busId = $tripDetail->bus_id;
+            $location = $tripDetail->current_location;
+
+            $sql3 = $conn->prepare("SELECT * FROM bus WHERE id = :id");
+            $sql3->bindParam(":id", $busId);
+            $exe2 = $sql3->execute();
+
+            if (!$exe2) {
+                throw new LogicException("Error loading data...");
+            }
+
+            $busDetail = $sql3->fetch(PDO::FETCH_OBJ);
+            $totalSeatv = $busDetail->total_seat;
+            $busImagev = $busDetail->image;
+            echo '<div class="box">
             <div class="row">
-                <div class="col boxBusPic">
-                    <img src="<?= APP_URL ?>/public/img/bus.png" alt="Bus">
+            <div class="col boxBusPic">
+                <img src="' .
+                APP_URL . "/uploads/" . $busImagev
+                . '" alt="Bus">
+            </div>
+            <div class="col-6 boxLeft boxRight">
+                <div class="boxBottom">
+                    <div class="boxText h4">' .
+                strtoupper($location) . " - " . strtoupper($destination) . " (" .  $departureDate . ")"
+                . '</div>
                 </div>
-                <div class="col-6 boxLeft boxRight">
-                    <div class="boxBottom">
-                        <div class="boxText">
-                            <span class="cH2">ACCRA(CIRCLE) - BEREKUM</span>
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm">
-                                <div class="boxText">
-                                    <img src="./img/timimgs.png" alt="">
-                                    <br>
-                                    <span class="cH3">
-                                        Timings <br> 9: 00 PM 5:45AM
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="col-sm boxLeft boxRight">
-                                <div class="boxText">
-                                    <img src="./img/estimatedTime.png" alt="">
-                                    <br>
-                                    <span class="cH3">
-                                        Estimated Time <br> 5:45 Hrs
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="col-sm">
-                                <div class="boxText">
-                                    <img src="./img/seats.png" alt="">
-                                    <br>
-                                    <span class="cH3">
-                                        Seats <br> 44 Available
-                                    </span>
-                                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="boxText">
+                                <img src="public/img/timimgs.png" alt="">
+                                <br>
+                                <span class="cH3">
+                                    Timings <br> ' .
+                $departureTime . " - " . $arrivalTime
+                . '
+                                </span>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div style="padding-left: 50px;"><br><br>
-                        <div class="perPassengerText">Amount paid</div>
-                        <br>
-                        <span class="cH2">GHS65</span>
+                        <div class="col-sm boxLeft">
+                            <div class="boxText">
+                                <br>
+                                <span class="cH3">
+                                    Selected Seat <br>' .
+                $schedule['seat_no']
+                . ' </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="col">
+                <div style="padding-left: 50px;"><br><br>
+                    <div class="perPassengerText">Amount paid</div>
+                    
+                    <span class="cH2">GHS' .
+                $schedule['p_amount']
+                . '</span>
+                 </div>
+            </div>
         </div>
-
+        </div>';
+        }
+        ?>
     </div>
 </div>
 <?php

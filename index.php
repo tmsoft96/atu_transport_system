@@ -7,7 +7,6 @@ include __DIR__ . "/main/homeDetials.php";
 
 $pageName = "homepage";
 $_SESSION['active'] = 'homepage';
-$_SESSION['msg_update'] = null;
 
 getHead(true, $pageName);
 getNavbar(true);
@@ -16,7 +15,6 @@ getNavbar(true);
     #divcolor {
         /* background-image: url('../public/img/VIP-Bus.png'); */
         border-color: red;
-
     }
 </style>
 <div class="container-fluid">
