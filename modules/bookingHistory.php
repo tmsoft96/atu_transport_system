@@ -21,11 +21,18 @@ getNavbar(false);
             </div>
             <div class="col-sm">
                 <div style="padding: 10px 10px 0px 40px;">
-                    <button type="button" class="btn btn-success" id="bookingPrintButton">Print Booking</button>
+                    <button type="button" class="btn btn-success" id="bookingPrintButton" onclick="window.print()">Print Booking</button>
                     <button type="button" class="btn btn-success" id="bookingCancelButton" data-toggle="modal" data-target="#deleteModal">Cancel Booking</button>
                     <button type="button" class="btn btn-success" id="bookingEditButton">Edit Booking</button></div>
             </div>
         </div>
+        <?php
+        if (isset($msg)) {
+            echo '<br> <div class="alert alert-warning h5">
+                        <p>' . $msg . '</p>
+                        </div>';
+        }
+        ?>
         <br><br>
         <span class="h4" id="bookingSelected">No booking selected</span>
         <?php
