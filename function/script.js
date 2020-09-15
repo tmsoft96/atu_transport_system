@@ -68,3 +68,18 @@ function selectSeat(num){
     seatText.innerHTML = num;
     seatTextBox.value = num;
 }
+
+function bookingHistorySelected(num, bookingId){
+    let title = document.getElementById("bookingSelected");
+    title.innerHTML = "Booking '" + num + "' selected";
+
+    let printBtn =  document.getElementById("bookingPrintButton");
+    let cancelBtn =  document.getElementById("bookingCancelButton");
+    let editBtn =  document.getElementById("bookingEditButton");
+
+    printBtn.disabled = false;
+    cancelBtn.disabled = false;
+    editBtn.disabled = false;
+
+    document.getElementById("canelBookingInput").value = bookingId;
+}
