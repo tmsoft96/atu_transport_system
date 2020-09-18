@@ -44,7 +44,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET["trip_id"])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["book-submit"])) {
-    $_SESSION['msg_update'] = null;
     $userId = $_SESSION["userId"];
     $routeId = $_SESSION["tripId"];
     $seatNo = $_POST["selected-seat"];

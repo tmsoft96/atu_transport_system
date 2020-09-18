@@ -66,8 +66,11 @@ getNavbar(true);
                         </div>';
         }
         if (isset($_SESSION['msg_update'])) {
-            echo '<div class="alert alert-info h5">
+            echo '<div class="alert alert-warning alert-dismissible fade show h5">
                         <p>' . $_SESSION['msg_update'] . '</p>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                         </div>';
         }
         ?>

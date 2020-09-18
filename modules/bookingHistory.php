@@ -6,7 +6,6 @@ include __DIR__ . "/../main/bookingHistoryDetails.php";
 checkUserIsLoggedIn();
 $pageName = "booking history";
 $_SESSION['active'] = 'booking';
-$_SESSION['msg_update'] = null;
 
 getHead(false, $pageName);
 

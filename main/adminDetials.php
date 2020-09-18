@@ -5,7 +5,6 @@ session_start();
 $msg = null;
 
 if (!isset($_POST['submit-bus']) ) {
-    $_SESSION['msg_update'] = null;
     $sql = $conn->prepare("SELECT * FROM bus");
     $exe = $sql->execute();
 
@@ -31,7 +30,6 @@ if (!isset($_POST['submit-bus']) ) {
 
 
 if (isset($_POST['submit-bus'])) {
-    $_SESSION['msg_update'] = null;
     $fileTmp = $_FILES['bus-pic']["tmp_name"];
     $fileName = $_FILES['bus-pic']["name"];
     $fileExt = explode(".", $fileName);
@@ -71,7 +69,6 @@ if (isset($_POST['submit-bus'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit-trip"])) {
-    $_SESSION['msg_update'] = null;
     $day = $_POST["day"];
     $location = $_POST["location"];
     $destination = $_POST["destination"];

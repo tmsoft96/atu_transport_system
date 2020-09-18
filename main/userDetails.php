@@ -30,7 +30,6 @@ if (isset($_SESSION['logged']) && !isset($_POST['submit-update'])) {
 $msg = null;
 
 if (isset($_POST['submit-update'])) {
-    $_SESSION['msg_update'] = null;
     $id = $_POST['user-id'];
     $name = $_POST['name'];
     $phone = $_POST['phone'];
@@ -69,7 +68,6 @@ if (isset($_POST['submit-update'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['change_password']) && isset($_POST['password'])  && isset($_POST['new-password'])  && isset($_POST['confirm-password']) && isset($_POST['user-id'])) {
-    $_SESSION['msg_update'] = null;
     try {
         $userId = $_POST['user-id'];
         $password = $_POST['password'];

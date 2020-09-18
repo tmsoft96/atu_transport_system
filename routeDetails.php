@@ -7,7 +7,6 @@ include __DIR__ . "/main/routeMainDetails.php";
 
 $pageName = "Trip Details";
 $_SESSION['active'] = null;
-$_SESSION['msg_update'] = null;
 
 getHead(true, $pageName);
 getNavbar(true);
