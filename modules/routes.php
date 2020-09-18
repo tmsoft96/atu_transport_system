@@ -70,52 +70,52 @@ getNavbar(false);
                                 }
                                 if ($sunday) echo ' <td>
                                     <div class="routeDateText">
-                                        <input class="form-check-input" type="radio" name="routeDay" id="routeDay1" value="option1" checked>
+                                        <input class="form-check-input" type="radio" name="routeDaySunday" id="routeDay1" value="option1">
                                         <br><br>
-                                        <label class="form-check-label" for="routeDay1">
+                                        <label class="form-check-label">
                                             Sunday
                                         </label>
                                     </div>
                                 </td>';
                                 if ($monday) echo '<td>
-                                    <input class="form-check-input" type="radio" name="routeDay" id="routeDay1" value="option1">
+                                    <input class="form-check-input" type="radio" name="routeDayMonday" id="routeDay1" value="option1" checked>
                                     <br><br>
-                                    <label class="form-check-label" for="routeDay1">
+                                    <label class="form-check-label">
                                         Monday
                                     </label>
                                 </td>';
                                 if ($tuesday) echo '<td>
-                                    <input class="form-check-input" type="radio" name="routeDay" id="routeDay1" value="option1">
+                                    <input class="form-check-input" type="radio" name="routeDayTuesday" id="routeDay1" value="option1">
                                     <br><br>
-                                    <label class="form-check-label" for="routeDay1">
+                                    <label class="form-check-label">
                                         Tuesday
                                     </label>
                                 </td>';
                                 if ($wednesday) echo '<td>
-                                    <input class="form-check-input" type="radio" name="routeDay" id="routeDay1" value="option1">
+                                    <input class="form-check-input" type="radio" name="routeDayWednesday" id="routeDay1" value="option1">
                                     <br><br>
-                                    <label class="form-check-label" for="routeDay1">
+                                    <label class="form-check-label">
                                         Wednesday
                                     </label>
                                 </td>';
                                 if ($thurday) echo '<td>
-                                    <input class="form-check-input" type="radio" name="routeDay" id="routeDay1" value="option1">
+                                    <input class="form-check-input" type="radio" name="routeDayThursday" id="routeDay1" value="option1">
                                     <br><br>
-                                    <label class="form-check-label" for="routeDay1">
+                                    <label class="form-check-label">
                                         Thursday
                                     </label>
                                 </td>';
                                 if ($friday) echo '<td>
-                                    <input class="form-check-input" type="radio" name="routeDay" id="routeDay1" value="option1">
+                                    <input class="form-check-input" type="radio" name="routeDayFriday" id="routeDay1" value="option1">
                                     <br><br>
-                                    <label class="form-check-label" for="routeDay1">
+                                    <label class="form-check-label">
                                         Friday
                                     </label>
                                 </td>';
                                 if ($saturday) echo '<td>
-                                    <input class="form-check-input" type="radio" name="routeDay" id="routeDay1" value="option1">
+                                    <input class="form-check-input" type="radio" name="routeDaySaturday" id="routeDay1" value="option1">
                                     <br><br>
-                                    <label class="form-check-label" for="routeDay1">
+                                    <label class="form-check-label">
                                         Saturday
                                     </label>
                                 </td>';
